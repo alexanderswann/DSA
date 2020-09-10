@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 public class DoublyLinkedList {
   private Node head,
   tail;
@@ -119,23 +120,41 @@ public class DoublyLinkedList {
 		}
   }
 
-	// public ArrayList<Integer> removeAll(String data){
-	// 	ArrayList<Integer> ind = new ArrayList<Integer>();
-	// 	Node curr1 = head;
-	// 	int count1 = 0;
-	// 	Node curr2 = tail;
-	// 	int count2 = length;
-	// 	if (length % 2 == 1){
-	// 		if(curr1.data.equals(data)){
-	//
-	// 		}
-	// 	}
-	//
-	// 	for(int i = 0; i< length/2; i++){
-	//
-	// 	}
-	//
-	// }
+	public ArrayList<Integer> removeAll(String data){
+		ArrayList<Integer> ind = new ArrayList<Integer>();
+		Node curr1 = head;
+		int count1 = 0;
+		Node curr2 = tail;
+		int count2 = length;
+		if (length % 2 == 1){
+			if(curr1.data.equals(data)){
+				ind.add(count1);
+				remove(0);
+			}
+			count1++;
+			curr1 = curr1.next;
+		}
+
+		for(int i = 0; i< length/2; i++){
+
+			if(curr1.data.equals(data)){
+				ind.add(count1);
+				remove(i);
+			}
+
+			if(curr2.data.equals(data)){
+				ind.add(count2);
+				remove(length-i);
+			}
+
+			count1++;
+			count2--;
+			curr1 = curr1.next;
+			curr2 = curr2.prev;
+		}
+		return ind;
+
+	}
 
 	public Node findMiddle(){
 		Node curr = head;
