@@ -1,7 +1,7 @@
 public class DoublyLinkedListTester{
 	public static void main(String[] args){
 
-		DoublyLinkedList list = new DoublyLinkedList();
+		DoublyLinkedList<String> list = new DoublyLinkedList<String>();
 
 //first batch of tests
 
@@ -90,12 +90,15 @@ public class DoublyLinkedListTester{
 		// list.add2Front("3");
 		// list.add2Front("2");
 		// list.add2Front("1");
-		list.add2End("4");
-		list.add2End("5");
-		list.add2Index(0,"5");
-		//list.add2End("4.5");
-		// list.add2Front("4.25");
+		// list.add2End("4");
+		// list.add2End("4");
+		// list.add2End("4");
 		// list.add2Index(0,"4");
+		// //list.add2End("4.5");
+		// //list.add2Front("");
+		// list.add2Index(0,"4");
+		// list.add2Index(0,"4");
+		//list.add2Index(0,"4");
 		// list.add2Index(0,"0");
 		// list.add2Index(1,"3");
 		// list.add2Index(1,"2");
@@ -147,14 +150,14 @@ System.out.println(list);
 		// list.add2Index(6,"4");
 		// list.add2Index(6,"9s");
 		// list.add2Index(6,"2");
-		// list.add2Index(6,"1");
+		list.add2Index(0,"3");
 		// System.out.println(list);
 		// System.out.println("\n");
 		// System.out.println(list.reverseToString());
 		// System.out.println(list);
 		// System.out.println("the size is " + list.size());
 		//
-		// System.out.println(list.remove(3));
+		 System.out.println(list.removeAll("3"));
 		// System.out.println(list);
 		// System.out.println("the size is " + list.size());
 		//s
@@ -164,7 +167,7 @@ System.out.println(list);
 		// list.add2Front("-1");
 		// list.add2Front("-2");
 		// list.add2End("14");
-		// list.add2End("15");
+		//list.add2End("15");
 		//
 		// System.out.println("the size is " + list.size());
 		//
@@ -187,17 +190,27 @@ System.out.println(list);
 		list.bounce();
 		list.bounce();
 		list.bounce();
-		list.bounce();
-		// list.add2End("13");
-		// list.add2Front("-1");
-		// list.add2Front("-2");
-		// list.add2End("14");
-		// list.add2End("15");
-		list.removeAll("5");
+		list.add2End("f");
+		list.add2Front("c");
+		list.add2Front("b");
+		list.add2End("h");
+		list.add2End("p");
 		System.out.println(list);
-		// System.out.println(list.reverseToString());
+		System.out.println(list.removeAll("p"));
+		//list.addInOrder("e");
+		//list.addInOrder("c");
+		list.addInOrder("g");
+		list.addInOrder("z");
+		list.addInOrder("z");
+		list.add2Front("a");
+		System.out.println(list);
+
+		System.out.println("the middle is " + list.findMiddle());
+		System.out.println(list.reverseToString());
+		System.out.println(list.size());
 		// System.out.println(list.rH());
-		// System.out.println(list.rT());
+		System.out.println("z".compareTo("f"));
+		System.out.println("a".compareTo("f"));
 
 
 	}

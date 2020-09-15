@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-public class DoublyLinkedList {
+public class DoublyLinkedList <E extends Comparable<E>>{
   private Node head,
   tail;
   private int length;
@@ -17,7 +17,7 @@ public class DoublyLinkedList {
 		many case
 	*/
 
-  public void add2End(String data) {
+  public void add2End(E data) {
     Node toAdd = new Node(data);
 
     if (tail == null && head == null) {
@@ -26,7 +26,7 @@ public class DoublyLinkedList {
       tail = toAdd;
       head = toAdd;
       length++;
-			System.out.println("monkey shits");
+
       return;
     }
 
@@ -47,7 +47,7 @@ public class DoublyLinkedList {
 		return tail;
 	}
 
-  public void add2Front(String data) {
+  public void add2Front(E data) {
     Node toAdd = new Node(data);
 
     if (tail == null && head == null) {
@@ -56,7 +56,7 @@ public class DoublyLinkedList {
       tail = toAdd;
       head = toAdd;
       length++;
-			System.out.println("monkey shit2s");
+
       return;
     }
 
@@ -70,7 +70,7 @@ public class DoublyLinkedList {
 
   }
 
-  public Boolean add2Index(int index, String data) {
+  public Boolean add2Index(int index, E data) {
 		if(length -1 >= index) {
 			if(index == 0){
 				add2Front(data);
@@ -120,37 +120,65 @@ public class DoublyLinkedList {
 		}
   }
 
-	public ArrayList<Integer> removeAll(String data){
+	public void addInOrder(E data){
+			Node mid = findMiddle();
+			E dat = mid.data;
+			int d = data.compareTo(dat);
+			System.out.println(d);
+			if (d < 0) {
+				Node curr = head;
+				for (int i = 0; i < length ; i++) {
+					if (data.compareTo(curr.data) < 0) {
+						if (i ==0){
+							add2Front(data);
+						}else{
+							add2Index(i , data);
+						}
+						return;
+					}
+					curr= curr.next;
+				}
+			}else{
+				Node curr = tail;
+				for (int i = 0; i < length ; i++) {
+					if (data.compareTo(curr.data) > 0) {
+						if (i == 0){
+							add2End(data);
+						}else{
+							add2Index(length - i , data);
+						}
+
+						return;
+					}
+					curr= curr.prev;
+				}
+
+			}
+	}
+
+	public ArrayList<Integer> removeAll(E data){
 		ArrayList<Integer> ind = new ArrayList<Integer>();
 		Node curr1 = head;
 		int count1 = 0;
-		Node curr2 = tail;
-		int count2 = length;
-		if (length % 2 == 1){
-			if(curr1.data.equals(data)){
-				ind.add(count1);
-				remove(0);
-			}
-			count1++;
-			curr1 = curr1.next;
-		}
+		int len  = length;
 
-		for(int i = 0; i< length/2; i++){
+
+
+		for(int i = 0; i < length+count1; i++){
 
 			if(curr1.data.equals(data)){
-				ind.add(count1);
-				remove(i);
+
+				ind.add(i);
+				remove(i - count1);
+				curr1 = curr1.next;
+				count1++;
+
+
+			}else{
+
+				curr1 = curr1.next;
 			}
 
-			if(curr2.data.equals(data)){
-				ind.add(count2);
-				remove(length-i);
-			}
-
-			count1++;
-			count2--;
-			curr1 = curr1.next;
-			curr2 = curr2.prev;
 		}
 		return ind;
 
@@ -185,11 +213,17 @@ public class DoublyLinkedList {
 		return length;
 	}
 	public void bounce(){
-		add2Front(tail.data);
-		remove(length -1);
+		if (length > 0){
+			add2Front(tail.data);
+			remove(length -1);
+			return;
+		}else{
+			return;
+		}
+
 
 	}
-	public String remove(int index){
+	public E remove(int index){
 		if (index > length -1){
 			return null;
 		}else{
@@ -198,8 +232,8 @@ public class DoublyLinkedList {
 				return null;
 			}else if(length == 1){
 				Node curr = head ;
-				String toReturn = "";
-				toReturn += curr.toString();
+				E toReturn = curr.data;
+				//toReturn += curr.toString();
 
 				head = null;
 				tail = null;
@@ -213,8 +247,8 @@ public class DoublyLinkedList {
 						curr = curr.next;
 					}
 					length--;
-					String toReturn = "";
-					toReturn += curr.toString();
+					E toReturn = curr.data;
+					//toReturn += curr.toString();
 
 					if (curr.prev == null){
 						head = curr.next ;
@@ -225,7 +259,7 @@ public class DoublyLinkedList {
 					}
 
 
-					System.out.println("index " + index + " was removed");
+					//System.out.println("index " + index + " was removed");
 					return toReturn;
 					//remove
 
@@ -233,11 +267,11 @@ public class DoublyLinkedList {
 					Node curr = tail;
 					for (int i = length-index-1; i > 0; i--) {
 						curr = curr.prev;
-						System.out.println("from the back");
+						//System.out.println("from the back");
 					}
 					length--;
-					String toReturn = "";
-					toReturn += curr.toString();
+					E toReturn = curr.data;
+					//toReturn += curr.toString();
 					if (curr.next == null){
 						tail = curr.prev ;
 						curr.prev.next = null;
@@ -248,7 +282,7 @@ public class DoublyLinkedList {
 					}
 
 
-					System.out.println("index " + index + " was removed");
+					//System.out.println("index " + index + " was removed");
 					return toReturn;
 
 				}
@@ -261,19 +295,23 @@ public class DoublyLinkedList {
 	public String reverseToString(){
 		String toReturn = "";
     Node curr = tail;
+		if(length == 0){
+			toReturn += "Your list is empty";
+		}else{
     while (curr != null) {
       toReturn += curr.toString();
       curr = curr.prev;
     }
+	}
     return toReturn;
 	}
 
   class Node {
-    String data;
+    E data;
     Node next;
     Node prev;
 
-    public Node(String data) {
+    public Node(E data) {
       this.data = data;
       next = null;
       prev = null;
