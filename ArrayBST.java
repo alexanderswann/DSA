@@ -248,6 +248,12 @@ public class ArrayBST {
   }
 
 
+  public void remove(int i){
+    
+
+  }
+
+
     //
   	// /**
     //     * Checks whether the tree is empty

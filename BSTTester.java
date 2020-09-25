@@ -7,12 +7,14 @@ public class BSTTester{
     // arrTree.insert(3);
     // arrTree.insert(10);
     // arrTree.insert(4);
-
+    System.out.println(arrTree.isEmpty());
     arrTree.insert(4);
-    arrTree.insert(5);
+    arrTree.insert(6);
     arrTree.insert(2);
     arrTree.insert(3);
     arrTree.insert(1);
+    arrTree.insert(7);
+    arrTree.insert(5);
 
 
 
@@ -29,7 +31,7 @@ public class BSTTester{
     //
     // System.out.println(arrTree.contains(4));
     // System.out.println(arrTree.contains(5));
-
+    System.out.println(arrTree.isEmpty());
     System.out.println("index " +arrTree.findParent(4));
 
 		BinarySearchTree tree = new BinarySearchTree();
