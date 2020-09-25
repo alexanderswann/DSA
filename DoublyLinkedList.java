@@ -71,8 +71,10 @@ public class DoublyLinkedList <E extends Comparable<E>>{
   }
 
   public Boolean add2Index(int index, E data) {
-		if(length -1 >= index) {
-			if(index == 0){
+		if(length -1 >= index ) {
+			if (index < 0) {
+        return false;
+      }else if(index == 0){
 				add2Front(data);
 				return true;
 			}else if(length == 1){
@@ -99,7 +101,7 @@ public class DoublyLinkedList <E extends Comparable<E>>{
 					Node curr = tail;
 					for (int i = length-index; i  > 0; i--) {
 						curr = curr.prev;
-						System.out.println("from the back");
+						//System.out.println("from the back");
 					}
 						toAdd.next = curr.next;
 						curr.next = toAdd;
@@ -112,7 +114,12 @@ public class DoublyLinkedList <E extends Comparable<E>>{
 
 				}
 			}
-		}else if(length == 0) {
+		}else if(index == length){
+      add2End(data);
+			return true;
+    }else if(index > length){
+      return false;
+    }else if(length == 0) {
 			add2Front(data);
 			return true;
 		}else{
@@ -121,12 +128,17 @@ public class DoublyLinkedList <E extends Comparable<E>>{
   }
 
 	public void addInOrder(E data){
-			Node mid = findMiddle();
-			E dat = mid.data;
-			int d = data.compareTo(dat);
-			System.out.println(d);
-			if (d < 0) {
-				Node curr = head;
+
+			if (length == 0) {
+				add2Front(data);
+        return;
+			}
+      Node mid = findMiddle();
+      E dat = mid.data;
+      int d = data.compareTo(dat);
+      System.out.println(d);
+      if (d < 0){
+        Node curr = head;
 				for (int i = 0; i < length ; i++) {
 					if (data.compareTo(curr.data) < 0) {
 						if (i ==0){
@@ -138,7 +150,8 @@ public class DoublyLinkedList <E extends Comparable<E>>{
 					}
 					curr= curr.next;
 				}
-			}else{
+
+      }else{
 				Node curr = tail;
 				for (int i = 0; i < length ; i++) {
 					if (data.compareTo(curr.data) > 0) {
@@ -156,6 +169,8 @@ public class DoublyLinkedList <E extends Comparable<E>>{
 			}
 	}
 
+
+  //O(n)
 	public ArrayList<Integer> removeAll(E data){
 		ArrayList<Integer> ind = new ArrayList<Integer>();
 		Node curr1 = head;
@@ -184,13 +199,35 @@ public class DoublyLinkedList <E extends Comparable<E>>{
 
 	}
 
+
+  //O(n)
+  public int indexOf(E data){
+    Node curr1 = head;
+    for(int i = 0; i < length; i++){
+      if(curr1.data.equals(data)){
+        return i;
+      }
+      curr1 = curr1.next;
+    }
+    return -1;
+  }
+
+
+  //O(n/2)
 	public Node findMiddle(){
 		Node curr = head;
 		if (length % 2 == 0){
 			for (int i = 0; i < (length/2)-1 ; i++) {
 				curr = curr.next;
 			}
-			return curr;
+
+      return curr;
+      // Node curr1 = curr.prev;
+      // if(curr1.data.compareTo(curr.data) > 1){
+      //   return curr1;
+      // }else{
+      //   return curr;
+      // }
 		}else{
 			for (int i = 0; i < (length/2) ; i++) {
 				curr = curr.next;
@@ -199,6 +236,7 @@ public class DoublyLinkedList <E extends Comparable<E>>{
 		}
 	}
 
+  //O(n)
   public String toString() {
     String toReturn = "";
     Node curr = head;
@@ -209,9 +247,13 @@ public class DoublyLinkedList <E extends Comparable<E>>{
     return toReturn;
   }
 
+
+  //O(1)
 	public int size(){
 		return length;
 	}
+
+  //O(1)
 	public void bounce(){
 		if (length > 0){
 			add2Front(tail.data);
@@ -223,6 +265,8 @@ public class DoublyLinkedList <E extends Comparable<E>>{
 
 
 	}
+
+  //O(n)
 	public E remove(int index){
 		if (index > length -1){
 			return null;
@@ -291,7 +335,7 @@ public class DoublyLinkedList <E extends Comparable<E>>{
 
 		}
 	}
-
+  //O(n)
 	public String reverseToString(){
 		String toReturn = "";
     Node curr = tail;
@@ -318,7 +362,7 @@ public class DoublyLinkedList <E extends Comparable<E>>{
     }
 
     public String toString() {
-      return data + " > ";
+      return data + ", ";
     }
   }
 
