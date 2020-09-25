@@ -1,6 +1,12 @@
 public class BSTTester{
 	public static void main(String[] args){
-		BinarySearchTree tree = new BinarySearchTree();
+
+
+    ArrayBST ArrTree = new ArrayBST();
+
+
+		/*BinarySearchTree tree = new BinarySearchTree();
+
 
 		tree.add(8);
 		tree.add(10);
@@ -14,6 +20,7 @@ public class BSTTester{
     tree.remove(6);
 
 		System.out.println(tree.preOrder());
+    */
 	}
 
 }
