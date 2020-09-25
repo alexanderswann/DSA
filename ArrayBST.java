@@ -118,6 +118,35 @@ public class ArrayBST {
     }
   }
 
+
+  public String inOrder(){
+    return inOrder(1);
+  }
+
+  private String inOrder(int curr){
+    if(curr >= arr.length || arr[curr] == null){
+      return "";
+    }else{
+      String left = inOrder((2 * curr) + 1);
+      String right = inOrder(2 * curr);
+      return  left + arr[curr]+ " "   + right;
+    }
+  }
+
+  public String postOrder(){
+    return postOrder(1);
+  }
+
+  private String postOrder(int curr){
+    if(curr >= arr.length || arr[curr] == null){
+      return "";
+    }else{
+      String left = postOrder((2 * curr) + 1);
+      String right = postOrder(2 * curr);
+      return  left  + right+ arr[curr] + " " ;
+    }
+  }
+
   public String toString(){
     String toRet = "";
 
@@ -194,6 +223,28 @@ public class ArrayBST {
 
   public boolean contains(int i){
     return find(i) >= 0;
+  }
+
+  public int findParent(int i){
+    if(arr[1] == null){
+      return -1;
+    }else {
+      return findParent(1, i);
+    }
+  }
+
+  public int findParent(int curr, int i){
+    if(curr >= arr.length || arr[curr] == null){
+      return -1;
+    }else if(rV(curr)>0 && arr[2 * curr] == i){
+      return curr;
+    }else if (lV(curr) > 0 && arr[(2 * curr) +1 ]==i){
+      return curr;
+    }else if (i > arr[curr]){
+      return findParent((2 * curr), i);
+    }else{
+      return findParent(((2 * curr) +1), i);
+    }
   }
 
 

@@ -154,27 +154,40 @@ public class BinarySearchTree {
 		return findParent(data).data;
 	}
 
-	private Node findParent(int data){
-		if (root.data == data){
-			return null;
-		} else {
-			return findParent(root, data);
-		}
-	}
+  public Node findParent(int data){
+    if(root.data == data){
+      return null;
+    }else{
+      return findParent(root, data);
+    }
+  }
 
-	private Node findParent(Node curr, int data){
-		if (curr == null){
-			return null;
-		} else if (curr.right!=null && curr.right.data == data){
-			return curr;
-		} else if (curr.left != null && curr.left.data == data){
-			return curr;
-		} else if (data > curr.data){
-			return findParent(curr.right, data);
-		} else {
-			return findParent(curr.left, data);
-		}
-	}
+  private Node findParent(Node curr, int data){
+    if(data > curr.data){
+      if (curr.right == null) {
+        return null;
+      }else{
+        if(curr.right.data == data){
+          return curr;
+        }else{
+          return findParent(curr.right, data);
+        }
+      }
+    }else if(data < curr.data){
+      if (curr.left == null) {
+        return null;
+      }else{
+        if(curr.left.data == data){
+          return curr;
+        }else{
+          return findParent(curr.left, data);
+        }
+      }
+    }else{
+      return null;
+    }
+
+  }
 
 	public String preOrder(){
 		return preOrder(root);
