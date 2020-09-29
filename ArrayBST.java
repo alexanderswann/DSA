@@ -1,4 +1,4 @@
-public class ArrayBST {
+public class ArrayBST{
 
   Integer arr[];
   public ArrayBST() {
@@ -247,9 +247,38 @@ public class ArrayBST {
     }
   }
 
+  public String tranm(int i){
+    return arr[i] + "";
+  }
 
   public void remove(int i){
-    
+
+    int curr = find(i);
+    if (curr == -1) {
+      System.out.println("not in the array");
+      return;
+    }else{
+      if(Ncase(curr) == -1){
+        arr[curr] = null;
+      }else if(Ncase(curr) == 2 || Ncase(curr) == 0){//right and 2 case
+        int pred = max(curr);
+        int data = pred;
+        remove(pred);
+        arr[curr] = data;
+
+        return;
+      }else if(Ncase(curr) == 1){//left
+        int succ = min(curr);
+        int data = succ;
+        remove(succ);
+        arr[curr] = data;
+        return;
+      }else{
+        return;
+      }
+    }
+
+
 
   }
 
