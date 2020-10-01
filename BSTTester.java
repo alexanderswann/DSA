@@ -29,7 +29,7 @@ public class BSTTester {
         System.out.print("items in list ");
         System.out.println(arrTree.ind(0));
 
-        //System.out.println(arrTree);
+        System.out.println(arrTree);
 
 
 

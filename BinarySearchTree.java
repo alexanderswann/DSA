@@ -167,11 +167,6 @@ public class BinarySearchTree {
         }
     }
 
-
-
-
-
-
     public int findParentTester(int data) {
         return findParent(data).data;
     }
