@@ -1,4 +1,4 @@
-public class BSTTester {
+public class ArrayBSTTester {
     public static void main(String[] args) {
         ArrayBST arrTree = new ArrayBST();
 

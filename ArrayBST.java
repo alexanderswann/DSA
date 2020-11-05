@@ -182,10 +182,10 @@ public class ArrayBST implements BST {
             System.out.println(i + " is not in the tree");
             return;
         } else {
-            if (Ncase(curr) == -1) {
+            if (Ncase(curr) == -1) { //leaf case
                 arr[curr] = null;
                 arr[0]--;
-            } else if (Ncase(curr) == 2 || Ncase(curr) == 0) { //right and 2 case
+            } else if (Ncase(curr) == 2 || Ncase(curr) == 0) { //right no left or 2 case
 
                 int pred = min(2 * curr);
                 int data = pred;
@@ -193,7 +193,7 @@ public class ArrayBST implements BST {
                 arr[curr] = data;
 
                 return;
-            } else if (Ncase(curr) == 1) { //left
+            } else if (Ncase(curr) == 1) { //left no right case
                 int sc = max(2 * curr + 1);
                 int data = sc;
                 delete(sc);
@@ -228,8 +228,10 @@ public class ArrayBST implements BST {
             return findParent(((2 * curr) + 1), i);
         }
     }
+    //Ncase determines the case of a "node" at a particular given index
 
-    private int Ncase(int i) {
+
+    public int Ncase(int i) {
         if (lV(i) > 0 && rV(i) > 0) { //2 case
             return 2;
         } else if (lV(i) > 0 && rV(i) <= 0) { //left no right
@@ -239,33 +241,42 @@ public class ArrayBST implements BST {
         } else if (lV(i) <= 0 && rV(i) <= 0) { //leaf case
             return -1;
         } else {
-            return -3;
+            return -3;//this should never be triggered
         }
     }
+
+    //lV determines if the "left node" of particular index i "node" a) exists
+    //and b) if it has data
 
     private int lV(int i) {
         if ((2 * i) + 1 < arr.length) {
             if (arr[(2 * i) + 1] == null) {
-                return 0;
+                return 0; //index exists but is empty
             } else {
-                return 1;
+                return 1; //index exist and has data
             }
         } else {
-            return -1;
+            return -1; //index does not exist, out of bounds
         }
     }
+
+    //rV determines if the "right node" of particular index i "node" a) exists
+    //and b) if it has data
 
     private int rV(int i) {
         if ((2 * i) < arr.length) {
             if (arr[2 * i] == null) {
-                return 0;
+                return 0;//index exist but is empty
             } else {
-                return 1;
+                return 1; //index exist and has data
             }
         } else {
-            return -1;
+            return -1; //index does not exist, out of bounds
         }
     }
+
+    //ind prints the value at index i of the array, returns "index out of bounds"
+    //if the index is out of bounds
 
     public String ind(int i) {
         if (i < arr.length && i >= 0) {
