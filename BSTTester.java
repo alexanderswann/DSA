@@ -1,6 +1,6 @@
 public class BSTTester {
     public static void main(String[] args) {
-        ArrayBST arrTree = new ArrayBST();
+        AVL arrTree = new AVL();
 
 
         System.out.println(arrTree.isEmpty());

@@ -93,14 +93,14 @@ public class AVL {
       right = null;
       left = null;
     }
-    pseudo code for delete
-    3 cases when removing
-      remove leaft
-        find parent then set child to null
-
-      parent points to the grandchild
-
-      curr = balance of curr
+    // pseudo code for delete
+    // 3 cases when removing
+    //   remove leaft
+    //     find parent then set child to null
+    //
+    //   parent points to the grandchild
+    //
+    //   curr = balance of curr
 
     private  Node rotateLeft(Node top){
       Node newTop = top.right;

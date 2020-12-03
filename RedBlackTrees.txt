@@ -1,0 +1,20 @@
+
+Red black trees are cool because like our AVL trees that we previously coded they
+are self balancing. This self balancing makes certain that our tree does not turn into
+a linked list. This self balancing also allows for our for much faster insertions,
+retrieval of data, and deletion of data. Although red black trees are slower when it
+comes to things like retrieval of data they are much faster at insertion and deletion
+of data. This happens because red black trees do not balance as often. Every single time
+that a node is inserted it is colored red. Red nodes are not allowed to have red parents,
+so some sort of recoloring or shift must take place to balance the tree. On top of this
+all paths from the root to a leaf node must have the same number of black colored nodes
+
+
+http://pages.cs.wisc.edu/~skrentny/cs367-common/readings/Red-Black-Trees/
+This source gives the different cases that we may encounter when inserting into our
+red black tree. It then talks about how we can remedy any issues that may arise when
+these different cases show up.
+
+https://www.cs.usfca.edu/~galles/visualization/RedBlack.html
+This source gives a very good visualization of red black trees. This source will be
+very useful to test my program against to make sure that it is working.
