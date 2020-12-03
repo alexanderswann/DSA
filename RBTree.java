@@ -1,37 +1,42 @@
-public class BinarySearchTree {
+public class RBTree {
     Node root;
 
-    public BinarySearchTree() {
+    public RBTree() {
         root = null;
     }
 
-    public boolean add(int thing) {
+    public boolean add(int ourData) {
         if (root == null) {
-            root = new Node(thing);
+            root = new Node(ourData);
+            root.color = 1;
             return true;
         } else {
-            return add(root, thing);
+            return add(root, ourData);
         }
     }
-
-    private boolean add(Node curr, int thing) {
-        if (curr.data == thing) {
+    //0 is left, 1 is right// red is 0, black is 1
+    private boolean add(Node curr, int ourData, int parentPointer, int parentcolor, int uncleColor) {
+        if (curr.data == ourData) {
             return false;
-        } else if (thing < curr.data) {
+        } else if (ourData < curr.data) {
             if (curr.left == null) {
-                curr.left = new Node(thing);
+                curr.left = new Node(ourData, 0);
                 return true;
             } else {
-                return add(curr.left, thing);
+                return add(curr.left, ourData, 0, curr.color, curr.right.color);
             }
         } else {
             if (curr.right == null) {
-                curr.right = new Node(thing);
+                curr.right = new Node(ourData, 0);
                 return true;
             } else {
-                return add(curr.right, thing);
+                return add(curr.right, ourData,1, curr.color, curr.left.color);
             }
         }
+    }
+
+    public String values (Node node){
+      String toReturn = "";
     }
 
     public int findMinRec() {
@@ -111,11 +116,11 @@ public class BinarySearchTree {
 
     }
 
-    public boolean remove(int thing) {
-        if (!contains(thing)) {
+    public boolean remove(int ourData) {
+        if (!contains(ourData)) {
             return false;
         }
-        Node parent = findParent(thing);
+        Node parent = findParent(ourData);
         if (parent == null) {
             //root case
             if (root.left == null && root.right == null) {
@@ -133,8 +138,8 @@ public class BinarySearchTree {
             }
             return true;
         } else {
-            if (thing > parent.data) {
-                //thing is on the right
+            if (ourData > parent.data) {
+                //ourData is on the right
                 Node curr = parent.right;
                 if (curr.left == null && curr.right == null) { //leaf case
                     parent.right = null;
@@ -166,6 +171,8 @@ public class BinarySearchTree {
             return true;
         }
     }
+
+
 
     public int findParentTester(int data) {
         return findParent(data).data;
@@ -205,6 +212,58 @@ public class BinarySearchTree {
         }
 
     }
+    // private int state(Node node){
+    //   if(node.color == null){
+    //     return -1;
+    //   }else if(node.color == 1){
+    //     return 1;
+    //   }
+    // }
+    private void miniRight(){
+
+    }
+
+    private void miniLeft(){
+
+    }
+
+    private void BigLeft(){
+
+    }
+
+    private void BigRight(){
+
+    }
+
+    private int rotateType(Node 1, Node 2){
+
+    }
+
+    private int unc(Node node){
+
+    }
+
+    private int parentColor(Node node){
+
+    }
+
+    private void testRoot(){
+
+    }
+
+    public int height(Node node) {
+
+        if (node == null) {
+            return 0;
+        } else {
+
+            int hl = (node.left == null) ? 0 : height(node.left);
+            int hr = (node.right == null) ? 0 : height(node.right);
+
+            return Math.max(hl, hr) + 1;
+        }
+
+    }
 
     private String toReturn = "";
     public String levelOrder() {
@@ -229,19 +288,6 @@ public class BinarySearchTree {
     }
 
 
-    public int height(Node node) {
-
-        if (node == null) {
-            return 0;
-        } else {
-
-            int hl = (node.left == null) ? 0 : height(node.left);
-            int hr = (node.right == null) ? 0 : height(node.right);
-
-            return Math.max(hl, hr) + 1;
-        }
-
-    }
 
     private void levelTraverse(Node node, int level, int rowHeight) {
         if (node == null && level == 1) {
@@ -315,11 +361,12 @@ public class BinarySearchTree {
         int data;
         int color; //0 is red, 1 is black
 
-        public Node(int data) {
+        public Node(int data, int color) {
             this.data = data;
             left = null;
             right = null;
-            color = 0;
+            this.color = color;
+
         }
 
         public Node() {
