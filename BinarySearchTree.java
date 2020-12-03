@@ -207,41 +207,21 @@ public class BinarySearchTree {
     }
 
     private String toReturn = "";
-    public String printLevelOrder()
-    {
+    public String printLevelOrder() {
         int h = height(root);
         int i;
-        int space;
-        int Myheight=h;
-        System.out.println(h);
-        for (i=0; i<h; i++){
+        int Myheight = h;
+        for (i = 0; i < h; i++) {
 
-          // for (int j = i; j< h  ;j++ ) {
-          //   toReturn  += "  ";
-          // }
+            for (int j = 0; j < (int) Math.pow(2, (Myheight) + 1) - 4; j++) {
 
-          for (int j = 0;j  < (int)Math.pow(2, (Myheight)+1) -4  ;j++ ) {
-            // System.out.println(height(node));
-            // System.out.println((int)Math.pow(2, height(node)));
+                toReturn += " ";
 
+            }
 
-              toReturn  += " ";
-
-            //  toReturn  +=i +" ";
-
-
-          }
-
-
-
-            printGivenLevel(root, i+1, Myheight);
+            printGivenLevel(root, i + 1, Myheight);
             Myheight--;
             toReturn += "\n\n";
-
-
-
-
-
 
         }
         return toReturn;
@@ -251,103 +231,89 @@ public class BinarySearchTree {
     /* Compute the "height" of a tree -- the number of
     nodes along the longest path from the root node
     down to the farthest leaf node.*/
-    public int height(Node node)
-    {
-        if (node == null)
-           return 0;
-        else
-        {
-            /* compute  height of each subtree */
-            int lheight = height(node.left);
-            int rheight = height(node.right);
+    // public int height(Node node)
+    // {
+    //     if (node == null)
+    //        return 0;
+    //     else
+    //     {
+    //         /* compute  height of each subtree */
+    //         int lheight = height(node.left);
+    //         int rheight = height(node.right);
+    //
+    //         /* use the larger one */
+    //         if (lheight < rheight)
+    //             return(rheight+1);
+    //         else return(lheight+1);
+    //     }
+    // }
+    public int height(Node node) {
 
-            /* use the larger one */
-            if (lheight < rheight)
-                return(rheight+1);
-            else return(lheight+1);
+        if (node == null) {
+            return 0;
+        } else {
+
+
+
+
+
+            int hl = (node.left == null) ? 0 : height(node.left);
+            int hr = (node.right == null) ? 0 : height(node.right);
+
+            return Math.max(hl, hr) + 1;
         }
+
     }
-        // public int height(Node node){
-        //
-        //   if(node == null){
-        //      return 0;
-        //   }else{
-        //
-        //
-        //
-        //
-        //
-        //   int hl = (node.left == null) ? 0 : height(node.left);
-        //   int hr = (node.right == null) ? 0 : height(node.right);
-        //
-        //   return Math.max(hl, hr) + 1;
-        // }
-        //
-        // }
 
 
     /* Print nodes at the given level */
-    void printGivenLevel (Node node ,int level, int Myheight)
-    {
-        if (node == null && level == 1){
+    private void printGivenLevel(Node node, int level, int Myheight) {
+        if (node == null && level == 1) {
             toReturn += "[**]";
-            for (int i = 0;i< (int)Math.pow(2, (Myheight)+2) -4 ;i++ ) {
+            for (int i = 0; i < (int) Math.pow(2, (Myheight) + 2) - 4; i++) {
 
-                toReturn  += " ";
+                toReturn += " ";
 
             }
 
             return;
-        }else if (node == null && level > 1) {
-          node = new Node();
+        } else if (node == null && level > 1) {
+            node = new Node();
 
 
-          printGivenLevel(node.left, level-1,  Myheight);
-          //toReturn  += "  ";
-          printGivenLevel(node.right, level-1, Myheight);
+            printGivenLevel(node.left, level - 1, Myheight);
+            printGivenLevel(node.right, level - 1, Myheight);
 
-        }else if (level == 1 && node != null){
-          int dat = node.data;
-          String sign;
-          String sign2;
-          if(dat % 2 == 0){
-            sign = "{";
-            sign2 = "}";
-          }else{
-            sign = "[";
-            sign2 = "]";
-          }
+        } else if (level == 1 && node != null) {
+            int dat = node.data;
+            String sign;
+            String sign2;
+            if (dat % 2 == 0) {
+                sign = "{";
+                sign2 = "}";
+            } else {
+                sign = "[";
+                sign2 = "]";
+            }
 
-          if (dat>-10 && dat <10){
-            toReturn += sign + "0" + (node.data)+ sign2;
-          }else{
-           toReturn += sign + (node.data)+ sign2;
-          }
-
-
-
-
-            for (int i = 0;i  < (int)Math.pow(2, (Myheight)+2) -4  ;i++ ) {
-              // System.out.println(height(node));
-              // System.out.println((int)Math.pow(2, height(node)));
-
-
-                toReturn  += " ";
-
-              //  toReturn  +=i +" ";
-
-
+            if (dat > -10 && dat < 10) {
+                toReturn += sign + "0" + (node.data) + sign2;
+            } else {
+                toReturn += sign + (node.data) + sign2;
             }
 
 
-            //System.out.print(node.data + " ");
-        }else if (level > 1){
 
 
-            printGivenLevel(node.left, level-1,  Myheight);
-            //toReturn  += "  ";
-            printGivenLevel(node.right, level-1, Myheight);
+            for (int i = 0; i < (int) Math.pow(2, (Myheight) + 2) - 4; i++) {
 
+                toReturn += " ";
+
+            }
+
+        } else if (level > 1) {
+            printGivenLevel(node.left, level - 1, Myheight);
+            printGivenLevel(node.right, level - 1, Myheight);
         }
     }
 
@@ -370,16 +336,17 @@ public class BinarySearchTree {
 
     class Node {
         Node left, right;
-        Integer data;
+        int data;
+        int color; //0 is red, 1 is black
 
-        public Node(Integer data) {
+        public Node(int data) {
             this.data = data;
             left = null;
             right = null;
+            color = 0;
         }
 
         public Node() {
-
             left = null;
             right = null;
         }

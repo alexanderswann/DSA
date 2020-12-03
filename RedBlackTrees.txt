@@ -18,3 +18,14 @@ these different cases show up.
 https://www.cs.usfca.edu/~galles/visualization/RedBlack.html
 This source gives a very good visualization of red black trees. This source will be
 very useful to test my program against to make sure that it is working.
+
+pre post order
+
+level order traversal keep track of width of array
+
+remove
+contains
+insert
+to String
+
+cd Documents\GitHub\DSA
