@@ -5,38 +5,91 @@ public class RBTree {
         root = null;
     }
 
+
+    //0 is left, 1 is right// red is 0, black is 1
+
     public boolean add(int ourData) {
         if (root == null) {
-            root = new Node(ourData);
-            root.color = 1;
+            root = new Node(ourData, 1);
+            values(ourData, -1,-1,-1,-1,-1);
             return true;
         } else {
-            return add(root, ourData);
+            return add(root, ourData, -1, 1, -1, -1);
         }
     }
-    //0 is left, 1 is right// red is 0, black is 1
-    private boolean add(Node curr, int ourData, int parentPointer, int parentcolor, int uncleColor) {
+
+
+    private boolean add(Node curr, int ourData, int parentPointer, int parentcolor, int uncleColor, int siblingColor) {
         if (curr.data == ourData) {
             return false;
         } else if (ourData < curr.data) {
             if (curr.left == null) {
                 curr.left = new Node(ourData, 0);
+                values(ourData, parentPointer,0, curr.color,curr.right != null ? curr.right.color : -1, siblingColor);
                 return true;
             } else {
-                return add(curr.left, ourData, 0, curr.color, curr.right.color);
+
+                return add(curr.left, ourData, 0, curr.color, siblingColor, curr.right != null ? curr.right.color : -1);
             }
         } else {
             if (curr.right == null) {
                 curr.right = new Node(ourData, 0);
+                values(ourData, parentPointer,1, curr.color,curr.left != null ? curr.left.color : -1, siblingColor);
                 return true;
             } else {
-                return add(curr.right, ourData,1, curr.color, curr.left.color);
+                return add(curr.right, ourData,1, curr.color,siblingColor, curr.left != null ? curr.left.color : -1);
             }
         }
     }
 
-    public String values (Node node){
-      String toReturn = "";
+    public String values (int data, int parentPointer, int ourPointer, int parentColor, int siblingColor,int uncleColor) {
+      String toReturn = "\n\nOur Data is " + data;
+
+      if(parentPointer == 0){
+        toReturn += "\nThe parent is on the left\n";
+      }else if(parentPointer == 1){
+        toReturn += "\nThe parent is on the right\n";
+      }else{
+        toReturn += ourPointer >=0 ?"\nOur parent is the root\n":"\nWe are the root\n";
+      }
+
+      if(ourPointer == 0){
+        toReturn += "We are on the left\n";
+      }else if(ourPointer == 1){
+        toReturn += "We are on the right\n";
+      }else{
+        toReturn += "We are the root\n";
+      }
+
+      if(parentColor == 0){
+        toReturn += "The parent is red\n";
+      }else if(parentColor == 1){
+        toReturn += "The parent is black\n";
+      }else{
+        toReturn += "There is no parent\n";
+      }
+
+
+      if(uncleColor == 0){
+        toReturn += "The uncle is red\n";
+      }else if(uncleColor == 1){
+        toReturn += "The uncle is black\n";
+      }else{
+        toReturn += "There is no uncle\n";
+      }
+
+      if(siblingColor == 0){
+        toReturn += "The sibling is red\n";
+      }else if(siblingColor == 1){
+        toReturn += "The sibling is black\n";
+      }else{
+        toReturn += "There is no sibling\n";
+      }
+
+      System.out.println(toReturn);
+
+      return toReturn;
+
     }
 
     public int findMinRec() {
@@ -219,6 +272,29 @@ public class RBTree {
     //     return 1;
     //   }
     // }
+
+      /*
+    private boolean acessData(Node curr, int ourData, int parentPointer, int parentcolor, int uncleColor, int siblingcolor){
+      if (curr.data == ourData) {
+          return true;
+      } else if (ourData < curr.data) {
+          if (curr.left == null) {
+              curr.left = new Node(ourData, 0);
+              return true;
+          } else {
+              return add(curr.left, ourData, 0, curr.color, curr.right.color);
+          }
+      } else {
+          if (curr.right == null) {
+              curr.right = new Node(ourData, 0);
+              return true;
+          } else {
+              return add(curr.right, ourData,1, curr.color, curr.left.color);
+          }
+      }
+
+    }
+
     private void miniRight(){
 
     }
@@ -250,6 +326,7 @@ public class RBTree {
     private void testRoot(){
 
     }
+    */
 
     public int height(Node node) {
 
@@ -310,13 +387,15 @@ public class RBTree {
             int dat = node.data;
             String sign;
             String sign2;
-            if (dat % 2 == 0) {
+            if (node.color == 0) {
                 sign = "{";
                 sign2 = "}";
             } else {
                 sign = "[";
                 sign2 = "]";
             }
+
+
 
             if (dat > -10 && dat < 10) {
                 toReturn += sign + "0" + (node.data) + sign2;

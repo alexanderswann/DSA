@@ -9,15 +9,18 @@ public class qwe {
         tree.add(10);
         tree.add(14);
         tree.add(18);
-        tree.add(22);
-        tree.add(9);
-        tree.add(4);
+        tree.add(17);
+        // tree.add(9);
+        // tree.add(4);
         System.out.println(tree.levelOrder());
 
+        System.out.println(tree.preOrder());
+
+
         // System.out.println(tree.findMaxRec());
-        tree.remove(12);
-        tree.remove(16);
-        System.out.println(tree.levelOrder());
+        // tree.remove(12);
+        // tree.remove(16);
+        // System.out.println(tree.levelOrder());
         //
         // tree.add(15);
         // tree.add(19);
