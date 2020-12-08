@@ -3,18 +3,53 @@ public class qwe {
         RBTree tree = new RBTree();
 
         System.out.println("\n\n\n");
-        tree.add(16);
-        tree.add(20);
-        tree.add(12);
-        tree.add(10);
-        tree.add(14);
-        tree.add(18);
-        tree.add(17);
-        // tree.add(9);
-        // tree.add(4);
-        System.out.println(tree.levelOrder());
 
-        System.out.println(tree.preOrder());
+        //tree.add(20);
+        tree.add(12);
+        //tree.add(10);
+        tree.add(14);
+        tree.add(17);
+        tree.add(18);
+        System.out.println(tree.levelOrder());
+        tree.add(20);
+        System.out.println(tree.levelOrder());
+        tree.add(9);
+        tree.add(4);
+
+        tree.add(16);
+        tree.add(15);
+          tree.add(90);
+          tree.add(44);
+          System.out.println(tree.levelOrder());
+
+          tree.add(56);
+          tree.add(13);
+
+          tree.add(70);
+          tree.add(30);
+            tree.add(20);
+              tree.add(35);
+
+          tree.add(25);
+          tree.add(27);
+          System.out.println(tree.levelOrder());
+          tree.add(28);
+        tree.add(29);
+        //tree.add(26);
+
+
+        System.out.println(tree.levelOrder());
+      //   System.out.println(tree.findParent(15));
+      // //  tree.leftRight();
+      //
+      //
+      //   System.out.println(tree.levelOrder());
+      //   System.out.println("second rotate");
+      //   //tree.leftLeft();
+      //   System.out.println(tree.levelOrder());
+      //
+      //
+      //   System.out.println(tree.preOrder());
 
 
         // System.out.println(tree.findMaxRec());

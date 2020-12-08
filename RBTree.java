@@ -1,5 +1,6 @@
 public class RBTree {
     Node root;
+    Node holder;
 
     public RBTree() {
         root = null;
@@ -11,39 +12,42 @@ public class RBTree {
     public boolean add(int ourData) {
         if (root == null) {
             root = new Node(ourData, 1);
-            values(ourData, -1,-1,-1,-1,-1);
+            values(root, ourData,-1, -1, holder, holder, holder, holder, -1, holder);
             return true;
         } else {
-            return add(root, ourData, -1, 1, -1, -1);
+            return add(root, ourData, -1, holder, holder, holder, holder, -1 , holder);
         }
     }
 
 
-    private boolean add(Node curr, int ourData, int parentPointer, int parentcolor, int uncleColor, int siblingColor) {
+    private boolean add(Node curr, int ourData, int parentPointer, Node parent, Node uncle, Node sibling, Node grandpap, int papPointer, Node greatPappy) {
         if (curr.data == ourData) {
             return false;
         } else if (ourData < curr.data) {
             if (curr.left == null) {
                 curr.left = new Node(ourData, 0);
-                values(ourData, parentPointer,0, curr.color,curr.right != null ? curr.right.color : -1, siblingColor);
+                values(curr.left, ourData, parentPointer,0, curr ,curr.right, sibling, parent, papPointer, grandpap);
+                fixer(curr.left, ourData, parentPointer,0, curr ,curr.right, sibling, parent, papPointer, grandpap);
+
                 return true;
             } else {
 
-                return add(curr.left, ourData, 0, curr.color, siblingColor, curr.right != null ? curr.right.color : -1);
+                return add(curr.left, ourData, 0, curr, sibling, curr.right, parent, parentPointer, grandpap);
             }
         } else {
             if (curr.right == null) {
                 curr.right = new Node(ourData, 0);
-                values(ourData, parentPointer,1, curr.color,curr.left != null ? curr.left.color : -1, siblingColor);
+                values(curr.right, ourData, parentPointer,1, curr, curr.left, sibling, parent, papPointer, grandpap);
+                fixer(curr.right, ourData, parentPointer,1, curr, curr.left, sibling, parent, papPointer, grandpap);
                 return true;
             } else {
-                return add(curr.right, ourData,1, curr.color,siblingColor, curr.left != null ? curr.left.color : -1);
+                return add(curr.right, ourData,1, curr, sibling, curr.left, parent, parentPointer, grandpap);
             }
         }
     }
 
-    public String values (int data, int parentPointer, int ourPointer, int parentColor, int siblingColor,int uncleColor) {
-      String toReturn = "\n\nOur Data is " + data;
+    public String values (Node curr, int data, int parentPointer, int ourPointer, Node parent, Node sibling, Node uncle, Node grandpap, int papPointer, Node greatPappy) {
+      String toReturn = "\n\nOur Data is " + curr.data;
 
       if(parentPointer == 0){
         toReturn += "\nThe parent is on the left\n";
@@ -61,36 +65,199 @@ public class RBTree {
         toReturn += "We are the root\n";
       }
 
-      if(parentColor == 0){
-        toReturn += "The parent is red\n";
-      }else if(parentColor == 1){
-        toReturn += "The parent is black\n";
-      }else{
+       if(parent == null){
         toReturn += "There is no parent\n";
+      }else if(parent.color == 0){
+        toReturn += "The parent is red\n";
+      }else{
+        toReturn += "The parent is black\n";
       }
 
-
-      if(uncleColor == 0){
-        toReturn += "The uncle is red\n";
-      }else if(uncleColor == 1){
-        toReturn += "The uncle is black\n";
-      }else{
+       if(uncle == null){
         toReturn += "There is no uncle\n";
+      }else if(uncle.color == 0){
+        toReturn += "The uncle is red\n";
+      }else{
+        toReturn += "The uncle is black\n";
       }
 
-      if(siblingColor == 0){
-        toReturn += "The sibling is red\n";
-      }else if(siblingColor == 1){
-        toReturn += "The sibling is black\n";
-      }else{
+
+       if(sibling == null){
         toReturn += "There is no sibling\n";
+      }else if(sibling.color == 0){
+        toReturn += "The sibling is red\n";
+      }else{
+        toReturn += "The sibling is black\n";
       }
+
+      if(grandpap == null){
+       toReturn += "There is no grandpap\n";
+     }else if(grandpap.color == 0){
+       toReturn += "The grandpap is red\n";
+     }else{
+       toReturn += "The grandpap is black\n";
+     }
+
+      if(greatPappy == null){
+       toReturn += "There is no greatPappy\n";
+     }else if(greatPappy.color == 0){
+       toReturn += "The greatPappy is red\n";
+     }else{
+       toReturn += "The greatPappy is black\n";
+     }
+
+     if(papPointer == 0){
+       toReturn += "The grandpap  is on the left\n";
+     }else if(parentPointer == 1){
+       toReturn += "The grandpap is on the right\n";
+     }else{
+       toReturn += parentPointer >=0 ?"Our grandpap is the root\n":"\nWe are the root\n";
+     }
+
+
 
       System.out.println(toReturn);
 
+
+      //change the parent color and the siblig/uncle color to their nodes
       return toReturn;
 
     }
+          //0 is left, 1 is right// red is 0, black is
+  //fixer(curr,  data,  parentPointer,  ourPointer,  parent,  sibling,  uncle,  grandpap);
+    public Node fixer(Node curr, int data, int parentPointer, int ourPointer, Node parent, Node sibling, Node uncle, Node grandpap, int papPointer, Node greatPappy){
+
+      if (curr == root) {
+          return root;
+      } else if (curr.color ==0 && parent.color == 0 && parentPointer == 0 && ourPointer == 1 &&(uncle == null || uncle.color != 0)){
+        leftRight(grandpap); //parent is red, parent is left child, we are a right child
+        leftLeft(grandpap, papPointer, greatPappy);
+        rootCheck();
+        info(parent.data);
+      }else if (curr.color ==0&&parent.color == 0 && parentPointer == 0 && ourPointer == 0 && (uncle == null || uncle.color != 0)){
+        leftLeft(grandpap, papPointer, greatPappy);//parent is red, parent is left child, we are a left child
+        rootCheck();
+        info(parent.data);
+      }else if (curr.color ==0&&parent.color == 0 && parentPointer == 1 && ourPointer == 0 && (uncle == null || uncle.color != 0)) {
+        rightLeft(grandpap);//parent is red, parent is right child, we are a left child
+        rightRight(grandpap, papPointer, greatPappy);
+        rootCheck();
+        info(parent.data);
+      }else if (curr.color ==0&&parent.color == 0 && parentPointer == 1 && ourPointer == 1 && (uncle == null || uncle.color != 0)) {
+
+        rightRight(grandpap, papPointer, greatPappy); //parent is red, parent is right child, we are a right child
+        rootCheck();
+        info(parent.data);
+      }else if (curr.color ==0 &&parent.color == 0 && uncle != null && uncle.color == 0) {
+        //Node, parent and uncle are red, push blackness down from the grandpap
+        parent.color = 1;
+        uncle.color = 1;
+        grandpap.color = 0;
+        rootCheck();
+        info(grandpap.data);
+        System.out.println(grandpap.data);
+      }else{
+        info(parent.data);
+      }
+      return root;
+    }
+
+    public void rootCheck(){
+      if (root.color == 0) {
+          root.color = 1;
+      }
+      return;
+    }
+
+
+
+        public void leftRight(Node top){
+
+          Node newMid = top.left.right;
+          top.left.right = newMid.left;
+          newMid.left = top.left;
+          top.left = newMid;
+
+
+        }
+
+        public void rightRight(Node top, int papPointer, Node greatPappy){
+          Node newTop = top.right;
+          top.color = 0;
+          newTop.color = 1;
+          top.right = newTop.left;
+          newTop.left = top;
+
+          if(greatPappy ==null){
+
+            root =  newTop;
+          }else{
+            if(papPointer == 1){
+              greatPappy.right = newTop;
+            }else{
+              greatPappy.left = newTop;
+            }
+          }
+
+          //return newTop;
+        }
+            //0 is left, 1 is right// red is 0, black is
+
+        public void leftLeft(Node top, int papPointer, Node greatPappy){
+          Node newTop = top.left;
+          top.color = 0;
+          newTop.color = 1;
+          top.left = newTop.right;
+          newTop.right = top;
+          if(greatPappy ==null){
+            root =  newTop;
+          }else{
+            if(papPointer == 1){
+              greatPappy.right = newTop;
+            }else{
+              greatPappy.left = newTop;
+            }
+          }
+          //top =  newTop;
+          //return newTop;
+        }
+
+        public void rightLeft(Node top){
+              Node newMid = top.right.left;
+              top.right.left = newMid.right;
+              newMid.right = top.right;
+              top.right = newMid;
+        }
+
+
+public boolean info(int ourData) {
+    if (root.data == ourData) {
+        fixer(root, ourData,-1, -1, holder, holder, holder, holder, -1 , holder);
+        return true;
+    } else {
+        return info(root, ourData, -1, holder, holder, holder, holder, -1, holder);
+    }
+}
+
+private boolean info(Node curr, int ourData, int parentPointer, Node parent, Node uncle, Node sibling, Node grandpap, int papPointer, Node greatPappy) {
+    if (ourData < curr.data) {
+        if (curr.left.data == ourData) {
+            fixer(curr.left, ourData, parentPointer,0, curr ,curr.right, sibling, parent, papPointer, grandpap);
+
+            return true;
+        } else {
+
+            return info(curr.left, ourData, 0, curr, sibling, curr.right, parent, parentPointer, grandpap);
+        }
+    } else {
+        if (curr.right.data == ourData) {
+            fixer(curr.right, ourData, parentPointer,1, curr, curr.left, sibling, parent, papPointer, grandpap);
+            return true;
+        } else {
+            return info(curr.right, ourData,1, curr, sibling, curr.left, parent, parentPointer, grandpap);
+        }
+    }
+}
 
     public int findMinRec() {
         if (root == null) {
@@ -227,9 +394,13 @@ public class RBTree {
 
 
 
-    public int findParentTester(int data) {
-        return findParent(data).data;
-    }
+    // public int findParentTester(int data) {
+    //     return findParent(data).data;
+    // }
+
+    // public Node fixer (Node curr){
+    //   if()
+    // }
 
     public Node findParent(int data) {
         if (root.data == data) {
@@ -273,60 +444,45 @@ public class RBTree {
     //   }
     // }
 
-      /*
-    private boolean acessData(Node curr, int ourData, int parentPointer, int parentcolor, int uncleColor, int siblingcolor){
-      if (curr.data == ourData) {
-          return true;
-      } else if (ourData < curr.data) {
-          if (curr.left == null) {
-              curr.left = new Node(ourData, 0);
-              return true;
-          } else {
-              return add(curr.left, ourData, 0, curr.color, curr.right.color);
-          }
-      } else {
-          if (curr.right == null) {
-              curr.right = new Node(ourData, 0);
-              return true;
-          } else {
-              return add(curr.right, ourData,1, curr.color, curr.left.color);
-          }
-      }
+      ///*
+    // private boolean acessData(Node curr, int ourData, int parentPointer, int parentcolor, int uncleColor, int siblingcolor){
+    //   if (curr.data == ourData) {
+    //       return true;
+    //   } else if (ourData < curr.data) {
+    //       if (curr.left == null) {
+    //           curr.left = new Node(ourData, 0);
+    //           return true;
+    //       } else {
+    //           return add(curr.left, ourData, 0, curr.color, curr.right.color);
+    //       }
+    //   } else {
+    //       if (curr.right == null) {
+    //           curr.right = new Node(ourData, 0);
+    //           return true;
+    //       } else {
+    //           return add(curr.right, ourData,1, curr.color, curr.left.color);
+    //       }
+    //   }
+    //
+    // }
 
-    }
 
-    private void miniRight(){
-
-    }
-
-    private void miniLeft(){
-
-    }
-
-    private void BigLeft(){
-
-    }
-
-    private void BigRight(){
-
-    }
-
-    private int rotateType(Node 1, Node 2){
-
-    }
-
-    private int unc(Node node){
-
-    }
-
-    private int parentColor(Node node){
-
-    }
-
-    private void testRoot(){
-
-    }
-    */
+    // private int rotateType(Node 1, Node 2){
+    //
+    // }
+    //
+    // private int unc(Node node){
+    //
+    // }
+    //
+    // private int parentColor(Node node){
+    //
+    // }
+    //
+    // private void testRoot(){
+    //
+    // }
+    //*/
 
     public int height(Node node) {
 
@@ -344,6 +500,7 @@ public class RBTree {
 
     private String toReturn = "";
     public String levelOrder() {
+        toReturn = "";
         int h = height(root);
         int i;
         int rowHeight = h;
@@ -451,6 +608,8 @@ public class RBTree {
         public Node() {
             left = null;
             right = null;
+
+
         }
 
         public String toString() {
