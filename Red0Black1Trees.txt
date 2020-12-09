@@ -29,3 +29,8 @@ insert
 to String
 
 cd Documents\GitHub\DSA
+
+Node and parent are both red. Node is right child, parent is right child. Can fix
+extra redness with a single rotation
+
+Node and parent are both red. Node is left child, parent is right child, rotate

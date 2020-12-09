@@ -4,41 +4,91 @@ public class qwe {
 
         System.out.println("\n\n\n");
 
-        //tree.add(20);
-        tree.add(12);
-        //tree.add(10);
-        tree.add(14);
-        tree.add(17);
-        tree.add(18);
-        System.out.println(tree.levelOrder());
+
+        // tree.add(87);
+        // tree.add(65);
+        // tree.add(40);
+        // tree.add(98);
+        // tree.add(99);
+        // tree.add(70);
+        // tree.add(75);
+        // System.out.println(tree.levelOrder());
+        // tree.add(20);
+        // System.out.println(tree.levelOrder());
+        // tree.add(93);
         tree.add(20);
         System.out.println(tree.levelOrder());
-        tree.add(9);
-        tree.add(4);
-
-        tree.add(16);
-        tree.add(15);
-          tree.add(90);
-          tree.add(44);
-          System.out.println(tree.levelOrder());
-
-          tree.add(56);
-          tree.add(13);
-
-          tree.add(70);
-          tree.add(30);
-            tree.add(20);
-              tree.add(35);
-
-          tree.add(25);
-          tree.add(27);
-          System.out.println(tree.levelOrder());
-          tree.add(28);
-        tree.add(29);
-        //tree.add(26);
-
-
+        tree.add(12);
+        //tree.add(10);
         System.out.println(tree.levelOrder());
+        tree.add(14);
+        System.out.println(tree.levelOrder());
+        tree.add(17);
+        System.out.println(tree.levelOrder());
+        tree.add(18);
+        System.out.println(tree.levelOrder());
+        //tree.add(20);
+        //System.out.println(tree.levelOrder());
+        tree.add(9);
+        System.out.println(tree.levelOrder());
+        tree.add(4);
+        System.out.println(tree.levelOrder());
+        tree.add(16);
+        System.out.println(tree.levelOrder());
+        tree.add(15);
+        System.out.println(tree.levelOrder());
+        tree.add(90);
+        System.out.println(tree.levelOrder());
+        tree.add(44);
+        System.out.println(tree.levelOrder());
+        tree.add(56);
+        System.out.println(tree.levelOrder());
+        //tree.add(13);
+        System.out.println(tree.levelOrder());
+        tree.add(70);
+        System.out.println(tree.levelOrder());
+        tree.add(30);
+        System.out.println(tree.levelOrder());
+        //tree.add(20);
+        System.out.println(tree.levelOrder());
+        tree.add(35);
+        System.out.println(tree.levelOrder());
+        //tree.add(25);
+        System.out.println(tree.levelOrder());
+        tree.add(27);
+        System.out.println(tree.levelOrder());
+        tree.add(28);
+        System.out.println(tree.levelOrder());
+        // tree.add(29);
+        // tree.remove(29);
+        // System.out.println(tree.levelOrder());
+
+        // tree.add(26);
+        // System.out.println(tree.levelOrder());
+        //
+        // tree.add(100);
+        tree.remove(14);
+        tree.remove(12);
+        tree.remove(9);
+        tree.remove(16);
+        System.out.println(tree.levelOrder());
+        tree.remove(15);
+        tree.remove(44);
+        tree.remove(30);
+        tree.remove(28);
+        tree.remove(27);
+        tree.remove(70);
+        System.out.println("-----------------------");
+        System.out.println(tree.levelOrder());
+
+        //tree.remove(13);
+        // tree.remove(18);
+        // tree.remove(25);
+
+      //  System.out.println(tree.levelOrder());
+
+
+
       //   System.out.println(tree.findParent(15));
       // //  tree.leftRight();
       //
