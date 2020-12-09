@@ -78,6 +78,13 @@ public class qwe {
         tree.remove(28);
         tree.remove(27);
         tree.remove(70);
+        tree.remove(17);
+        tree.remove(4);
+        tree.remove(18);
+        tree.remove(90);
+        tree.remove(35);
+        tree.remove(20);
+        //tree.remove(56);
         System.out.println("-----------------------");
         System.out.println(tree.levelOrder());
 

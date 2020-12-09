@@ -382,7 +382,9 @@ private boolean info(boolean del, Node curr, int ourData, int parentPointer, Nod
                       int parentPointer;
 
                       Node grandpap = findParent(parent.data);
-                      if(parent.data > grandpap.data){
+                      if(grandpap == null){
+                        parentPointer = -1;
+                      }else if(parent.data > grandpap.data){
                         parentPointer = 1;
                       }else{
                         parentPointer= 0 ;
@@ -513,9 +515,24 @@ private boolean info(boolean del, Node curr, int ourData, int parentPointer, Nod
         }
         }////0 is left, 1 is right// red is 0, black is 1
       }else if(nColor(sibling) == 0 && childPointer == 1){
-        rightLeft(parent);
+        leftLeft(parent, parentPointer, grandpap);
+        parent.color = 0;
+        //blackDown(parent, sibling, leftNeph);
+        sibling.right.left.color = 0;
+        parent.color = 1;
+        rootCheck();
       }else if (nColor(sibling) == 0 && childPointer == 0) {
-        leftRight(parent);
+
+        //rightLeft(parent);
+        rightRight(parent, parentPointer, grandpap);
+        parent.color = 0;
+        //blackDown(parent, sibling, leftNeph);
+
+        sibling.left.right.color = 0;
+        parent.color = 1;
+        rootCheck();
+        //info(true, parent.data);
+        //leftRight(parent);
       }
   }
 
