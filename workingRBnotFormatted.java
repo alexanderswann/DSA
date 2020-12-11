@@ -1,4 +1,4 @@
-public class RBTree {
+public class workingRb {
     Node root;
     Node holder;
 
@@ -129,23 +129,27 @@ public class RBTree {
         } else if (curr.color == 0 && parent.color == 0 && parentPointer == 0 && ourPointer == 1 && (uncle == null || uncle.color != 0)) {
             leftRight(grandpap); //parent is red, parent is left child, we are a right child
             colorCorrect(grandpap, grandpap.left, grandpap.left.left);
+            System.out.println(levelOrder() + "234234234");
             leftLeft(grandpap, papPointer, greatPappy);
             rootCheck();
             info(false, parent.data);
         } else if (curr.color == 0 && parent.color == 0 && parentPointer == 0 && ourPointer == 0 && (uncle == null || uncle.color != 0)) {
             colorCorrect(grandpap, grandpap.left, grandpap.left.left);
             leftLeft(grandpap, papPointer, greatPappy); //parent is red, parent is left child, we are a left child
+            System.out.println(levelOrder() + "093209423");
             rootCheck();
             info(false, parent.data);
         } else if (curr.color == 0 && parent.color == 0 && parentPointer == 1 && ourPointer == 0 && (uncle == null || uncle.color != 0)) {
             rightLeft(grandpap); //parent is red, parent is right child, we are a left child
             colorCorrect(grandpap, grandpap.right, grandpap.right.right);
+            System.out.println(levelOrder() + "89423749832748723984");
             rightRight(grandpap, papPointer, greatPappy);
             rootCheck();
             info(false, parent.data);
         } else if (curr.color == 0 && parent.color == 0 && parentPointer == 1 && ourPointer == 1 && (uncle == null || uncle.color != 0)) {
             colorCorrect(grandpap, grandpap.right, grandpap.right.right);
             rightRight(grandpap, papPointer, greatPappy); //parent is red, parent is right child, we are a right child
+            System.out.println(levelOrder() + "3423434");
             rootCheck();
             info(false, parent.data);
         } else if (curr.color == 0 && parent.color == 0 && uncle != null && uncle.color == 0) {
@@ -189,6 +193,7 @@ public class RBTree {
         newTop.left = top;
 
         if (greatPappy == null) {
+                    System.out.println("2222where in hwehrehrh");
 
             root = newTop;
         } else {
@@ -209,6 +214,7 @@ public class RBTree {
         newTop.right = top;
         System.out.println(levelOrder());
         if (greatPappy == null) {
+          System.out.println("where in hwehrehrh");
             root = newTop;
         } else {
             if (papPointer == 1) {
@@ -345,8 +351,9 @@ public class RBTree {
             } else if (root.left != null && root.right != null) {
 
                 Node pred = findMaxRec(root.left);
-                Node oldroot = root;
+                  Node oldroot = root;
                 System.out.println(levelOrder());
+                System.out.println("removing root node " + pred);
                 remove(pred.data);
                 oldroot.data = pred.data;
             } else {
@@ -393,6 +400,8 @@ public class RBTree {
                     Node predecessor = findMaxRec(curr.left);
                     remove(predecessor.data);
                     curr.data = predecessor.data;
+
+
                 }
             } else {
                 Node curr = parent.left;
@@ -403,6 +412,7 @@ public class RBTree {
                         parent.left = null;
                     } else {
                         int parentPointer;
+
                         Node grandpap = findParent(parent.data);
                         if (grandpap == null) {
                             parentPointer = -1;
@@ -417,10 +427,13 @@ public class RBTree {
                 } else if (curr.right == null && curr.left != null) { //one left child
                     parent.left = curr.left;
                     parent.left.color = 1;
+
                 } else if (curr.right != null && curr.left == null) { //one right child
                     parent.left = curr.right;
                     parent.left.color = 1;
                     //possible??
+
+
                 } else {
                     //we have two childs
                     Node predecessor = findMaxRec(curr.left);
@@ -451,21 +464,32 @@ public class RBTree {
         if (nColor(sibling) == 1 && childPointer == 1) {
             if (nColor(leftNeph) == 0) {
                 leftLeft(parent, parentPointer, grandpap);
+                System.out.println(levelOrder() + "left left");
                 blackDown(parent, sibling, leftNeph);
+                //sibling.color = 0;
+                System.out.println("329743");
+
             } else if (nColor(rightNeph) == 0) {
+              System.out.println(levelOrder() + "welcome in");
                 leftRight(parent);
                 colorCorrect(parent, rightNeph, sibling);
-                if (parent.color == 0 && rightNeph.color == 0 && sibling.color == 1) {
-                    rightNeph.color = 1;
-                    sibling.color = 0;
+                System.out.println(levelOrder() +"welcome out" +  parent + " "+ rightNeph+ " " + sibling  );
+                if(parent.color == 0 && rightNeph.color ==0 && sibling.color ==1 ){
+                  rightNeph.color =1;
+                  sibling.color = 0;
                 }
                 leftLeft(parent, parentPointer, grandpap);
+                System.out.println(levelOrder() + "left right");
                 blackDown(parent, sibling, rightNeph);
+                //rightNeph.color = 0;
+                System.out.println("52343777");
             } else {
                 //push black up
                 if (parent.color == 1) {
+
                     sibling.color = 0;
                     parent.color = 1;
+                    System.out.println("843037402374732");
                     info(true, parent.data);
                 } else {
                     sibling.color = 0;
@@ -476,59 +500,88 @@ public class RBTree {
             } ////0 is left, 1 is right// red is 0, black is 1
         } else if (nColor(sibling) == 1 && childPointer == 0) {
             if (nColor(rightNeph) == 0) {
+                System.out.println(levelOrder());
                 rightRight(parent, parentPointer, grandpap);
+                System.out.println(levelOrder());
                 blackDown(parent, sibling, rightNeph);
+                System.out.println("99997823");
+                //sibling.color = 0;
 
             } else if (nColor(leftNeph) == 0) {
+                System.out.println(levelOrder() + "here we are");
                 rightLeft(parent);
-                if (parent.color == 0 && leftNeph.color == 0 && sibling.color == 1) {
-                    leftNeph.color = 1;
-                    sibling.color = 0;
+                System.out.println(levelOrder() + "hello wehe");
+                if(parent.color == 0 && leftNeph.color ==0 && sibling.color ==1 ){
+                  leftNeph.color =1;
+                  sibling.color = 0;
                 }
                 rightRight(parent, parentPointer, grandpap);
+                System.out.println(levelOrder() + "idek man");
                 blackDown(parent, sibling, leftNeph);
+                //leftNeph.color = 0;
+                System.out.println("57237");
                 rootCheck();
 
             } else {
                 if (parent.color == 1) {
+
                     sibling.color = 0;
                     parent.color = 1;
+                    System.out.println("9087678");
                     info(true, parent.data);
+
                 } else {
+                  System.out.println("fuckss342");
                     sibling.color = 0;
                     parent.color = 1;
                 }
             } ////0 is left, 1 is right// red is 0, black is 1
         } else if (nColor(sibling) == 0 && childPointer == 1) {
             leftLeft(parent, parentPointer, grandpap);
+
+            System.out.println("87823");
+
             sibling.color = 1;
             parent.color = 0;
+
             delLeaf(parent, 1, 1, sibling);
             rootCheck();
         } else if (nColor(sibling) == 0 && childPointer == 0) {
+
+            System.out.println(levelOrder() + " w9q iuroifuso");
             rightRight(parent, parentPointer, grandpap);
+            System.out.println(levelOrder() + " w3q iuroifus sibling" + sibling+ "  parent" + parent);
             sibling.color = 1;
             parent.color = 0;
+            System.out.println(levelOrder() + " w1q iuroifuso");
             delLeaf(parent, 0, 0, sibling);
+
+            System.out.println(levelOrder() + " wq iuroifuso");
+
             rootCheck();
 
         }
     }
 
     public void blackDown(Node a, Node b, Node c) {
-        if (b.color == 1 && ((b.right != null && b.right.color == 0) && (b.left != null && b.left.color == 0))) {
-            c.color = 1;
-            a.color = 1;
-            b.color = 0;
-        } else if (c.color == 1 && ((c.right != null && c.right.color == 0) && (c.left != null && c.left.color == 0))) {
+        System.out.println(a+ " " + a.color);
+        System.out.println(b+ " " + b.color);
+        System.out.println(c+ " " + c.color);
+        if(b.color ==1 && ((b.right != null && b.right.color == 0) && (b.left != null && b.left.color == 0))){
+          c.color = 1;
+          a.color = 1;
+          b.color = 0;
+        }else if(c.color ==1 && ((c.right != null && c.right.color == 0) && (c.left != null && c.left.color == 0))){
             a.color = 1;
             b.color = 1;
             c.color = 0;
-        } else {
+        }else{
             a.color = 1;
             b.color = 1;
             c.color = 1;
         }
+
+
 
     }
 
@@ -622,6 +675,7 @@ public class RBTree {
             for (int i = 0; i < (int) Math.pow(2, (rowHeight) + 2) - 4; i++) {
 
                 toReturn += " ";
+
             }
 
             return;
@@ -654,6 +708,7 @@ public class RBTree {
             for (int i = 0; i < (int) Math.pow(2, (rowHeight) + 2) - 4; i++) {
 
                 toReturn += " ";
+
             }
 
         } else if (level > 1) {
@@ -689,12 +744,15 @@ public class RBTree {
             left = null;
             right = null;
             this.color = color;
+
         }
 
         public Node() {
             left = null;
             right = null;
             color = 1;
+
+
         }
 
         public String toString() {
@@ -702,3 +760,141 @@ public class RBTree {
         }
     }
 }
+
+/* Compute the "height" of a tree -- the number of
+nodes along the longest path from the root node
+down to the farthest leaf node.*/
+// public int height(Node node)
+// {
+//     if (node == null)
+//        return 0;
+//     else
+//     {
+//         /* compute  height of each subtree */
+//         int lheight = height(node.left);
+//         int rheight = height(node.right);
+//
+//         /* use the larger one */
+//         if (lheight < rheight)
+//             return(rheight+1);
+//         else return(lheight+1);
+//     }
+//
+//
+//
+// public int findMaxIter() {
+//     if (root == null) {
+//         return Integer.MIN_VALUE;
+//     } else {
+//         Node curr = root;
+//         while (curr.right != null) {
+//             curr = curr.right;
+//         }
+//         return curr.data;
+//     }
+// }
+//
+//     public int findMinIter() {
+//         if (root == null) {
+//             return Integer.MAX_VALUE;
+//         } else {
+//             Node curr = root;
+//             while (curr.left != null) {
+//                 curr = curr.left;
+//             }
+//             return curr.data;
+//         }
+//     }
+
+
+// private int state(Node node){
+//   if(node.color == null){
+//     return -1;
+//   }else if(node.color == 1){
+//     return 1;
+//   }
+// }
+// public int findParentTester(int data) {
+//     return findParent(data).data;
+// }
+
+// public Node fixer (Node curr){
+//   if()
+// }
+
+///*
+// private boolean acessData(Node curr, int ourData, int parentPointer, int parentcolor, int uncleColor, int siblingcolor){
+//   if (curr.data == ourData) {
+//       return true;
+//   } else if (ourData < curr.data) {
+//       if (curr.left == null) {
+//           curr.left = new Node(ourData, 0);
+//           return true;
+//       } else {
+//           return add(curr.left, ourData, 0, curr.color, curr.right.color);
+//       }
+//   } else {
+//       if (curr.right == null) {
+//           curr.right = new Node(ourData, 0);
+//           return true;
+//       } else {
+//           return add(curr.right, ourData,1, curr.color, curr.left.color);
+//       }
+//   }
+//
+// }
+
+
+// private int rotateType(Node 1, Node 2){
+//
+// }
+//
+// private int unc(Node node){
+//
+// }
+//
+// private int parentColor(Node node){
+//
+// }
+//
+// private void testRoot(){
+//
+// }
+//*/
+
+
+    //
+    //
+    // if(deleted node is red){
+    //   nothing
+    // }else if(child of deleted Node is double black && has black sibling && deleted is right child){
+    //     if(left nephew is red){
+    //       left left
+    //       push black donw
+    //     }else if(right nephew is red){
+    //       leftRight
+    //       leftLeft
+    //       push black donw
+    //     }else{//both nephews are black
+    //       push black up
+    //     }
+    //
+    // }else if(child of deleted Node is double black && has black sibling && deleted is left child){
+    //   if(right nephew is red){
+    //     right right
+    //     push black donw
+    //   }else if(left nephew is red){
+    //     rightleft
+    //     right right
+    //     push black donw
+    //   }else{//both nephews are black
+    //     push black up
+    //   }
+    // }else if(child of deleted node is double black && has red sibling){
+    //   if(we are right child){
+    //        right left
+    //         recall this method
+    // //   }else{
+    //       left right
+    // }
+    // }
