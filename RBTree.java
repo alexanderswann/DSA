@@ -470,19 +470,26 @@ public class RBTree {
                 System.out.println("329743");
 
             } else if (nColor(rightNeph) == 0) {
+              System.out.println(levelOrder() + "welcome in");
                 leftRight(parent);
+                colorCorrect(parent, rightNeph, sibling);
+                System.out.println(levelOrder() +"welcome out" +  parent + " "+ rightNeph+ " " + sibling  );
+                if(parent.color == 0 && rightNeph.color ==0 && sibling.color ==1 ){
+                  rightNeph.color =1;
+                  sibling.color = 0;
+                }
                 leftLeft(parent, parentPointer, grandpap);
                 System.out.println(levelOrder() + "left right");
                 blackDown(parent, sibling, rightNeph);
                 //rightNeph.color = 0;
-                System.out.println("52343");
+                System.out.println("52343777");
             } else {
                 //push black up
                 if (parent.color == 1) {
 
                     sibling.color = 0;
                     parent.color = 1;
-                    System.out.println("8037402374732");
+                    System.out.println("843037402374732");
                     info(true, parent.data);
                 } else {
                     sibling.color = 0;
@@ -501,8 +508,15 @@ public class RBTree {
                 //sibling.color = 0;
 
             } else if (nColor(leftNeph) == 0) {
+                System.out.println(levelOrder() + "cum socks");
                 rightLeft(parent);
+                System.out.println(levelOrder() + "socls of cum");
+                if(parent.color == 0 && leftNeph.color ==0 && sibling.color ==1 ){
+                  leftNeph.color =1;
+                  sibling.color = 0;
+                }
                 rightRight(parent, parentPointer, grandpap);
+                System.out.println(levelOrder() + "idek man");
                 blackDown(parent, sibling, leftNeph);
                 //leftNeph.color = 0;
                 System.out.println("57237");
@@ -517,6 +531,7 @@ public class RBTree {
                     info(true, parent.data);
 
                 } else {
+                  System.out.println("fuckss342");
                     sibling.color = 0;
                     parent.color = 1;
                 }
@@ -549,13 +564,17 @@ public class RBTree {
     }
 
     public void blackDown(Node a, Node b, Node c) {
-        System.out.println(a);
-        System.out.println(b);
-        System.out.println(c);
+        System.out.println(a+ " " + a.color);
+        System.out.println(b+ " " + b.color);
+        System.out.println(c+ " " + c.color);
         if(b.color ==1 && ((b.right != null && b.right.color == 0) && (b.left != null && b.left.color == 0))){
           c.color = 1;
           a.color = 1;
           b.color = 0;
+        }else if(c.color ==1 && ((c.right != null && c.right.color == 0) && (c.left != null && c.left.color == 0))){
+            a.color = 1;
+            b.color = 1;
+            c.color = 0;
         }else{
             a.color = 1;
             b.color = 1;
