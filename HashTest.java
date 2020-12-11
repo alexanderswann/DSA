@@ -14,10 +14,10 @@ public class HashTest {
         System.out.println(Math.abs(key.hashCode() % 10));
 
 
-        table2.insert(key, value);
+        //table2.insert(key, value);
         table2.insert(key2, value2);
         // System.out.println(table2.toString());
-        table2.insert(key, value2 + "kdf");
+        table2.insert(key2, value2 + "kdf");
         // System.out.println(table2.toString());
         table2.insert(key2, value2 + "kde");
 
@@ -82,7 +82,7 @@ public class HashTest {
 
             System.out.println(table.toString());
 
-            
+
         System.out.println(Math.abs(key.hashCode() % 10));
 
     }
