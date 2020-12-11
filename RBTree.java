@@ -508,9 +508,9 @@ public class RBTree {
                 //sibling.color = 0;
 
             } else if (nColor(leftNeph) == 0) {
-                System.out.println(levelOrder() + "cum socks");
+                System.out.println(levelOrder() + "here we are");
                 rightLeft(parent);
-                System.out.println(levelOrder() + "socls of cum");
+                System.out.println(levelOrder() + "hello wehe");
                 if(parent.color == 0 && leftNeph.color ==0 && sibling.color ==1 ){
                   leftNeph.color =1;
                   sibling.color = 0;
