@@ -472,7 +472,6 @@ public class RBTree {
                     parent.color = 1;
                 }
 
-
             } ////0 is left, 1 is right// red is 0, black is 1
         } else if (nColor(sibling) == 1 && childPointer == 0) {
             if (nColor(rightNeph) == 0) {
@@ -531,7 +530,6 @@ public class RBTree {
         }
 
     }
-
 
     public Node findParent(int data) {
         if (root.data == data) {
@@ -628,7 +626,6 @@ public class RBTree {
         } else if (node == null && level > 1) {
             node = new Node();
 
-
             levelTraverse(node.left, level - 1, rowHeight);
             levelTraverse(node.right, level - 1, rowHeight);
 
@@ -643,7 +640,6 @@ public class RBTree {
                 sign = "[";
                 sign2 = "]";
             }
-
 
             if (dat > -10 && dat < 10) {
                 toReturn += sign + "0" + (node.data) + sign2;
