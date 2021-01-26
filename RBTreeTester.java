@@ -1,4 +1,4 @@
-public class qwe {
+public class RBTreeTester {
     public static void main(String[] args) {
         RBTree tree = new RBTree();
 
@@ -17,7 +17,7 @@ public class qwe {
         //
         for (int i = 0; i < toRemove.length; i++ ) {
           //System.out.println("removing " + toRemove[i] +"\n"+tree.levelOrder());
-              tree.remove(toRemove[i]);
+          tree.remove(toRemove[i]);
         }
 
       tree.add(66);
