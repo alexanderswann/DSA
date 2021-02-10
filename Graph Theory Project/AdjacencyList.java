@@ -6,6 +6,13 @@ public class AdjacencyListTemplate {
 
 	private ArrayList<Vertex> vertexes;
 
+	HM <Vertex, Integer> ~~~~;
+	map = new HM <V,X>();
+	map.put(vertex, weight);
+	map.get(vertex);
+	map.keySet();
+	-> set<vertex>
+
 	public AdjacencyListTemplate(String fn) throws IOException{ //takes in the file you want to be read
 
 		vertexes = new ArrayList<Vertex>();
@@ -32,6 +39,7 @@ public class AdjacencyListTemplate {
 
 	public String toString(){
 		return "";
+
 	}
 
 	public static void main(String[] args){
