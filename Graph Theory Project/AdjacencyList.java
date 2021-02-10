@@ -2,26 +2,28 @@ import java.io.*;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class AdjacencyListTemplate {
+public class AdjacencyList {
 
 	private ArrayList<Vertex> vertexes;
 
-	HM <Vertex, Integer> ~~~~;
-	map = new HM <V,X>();
-	map.put(vertex, weight);
-	map.get(vertex);
-	map.keySet();
-	-> set<vertex>
-
-	public AdjacencyListTemplate(String fn) throws IOException{ //takes in the file you want to be read
+	public AdjacencyList(String fn) throws IOException{ //takes in the file you want to be read
 
 		vertexes = new ArrayList<Vertex>();
 
 		Scanner fscan = new Scanner(new File(fn)); //initiates file scanner
 		while(fscan.hasNextLine()){ //while there are still lines left in the file
 			String line = fscan.nextLine(); //read one in
+			String vert1 = line.substring(0, line.indexOf(" "));
+			line = line.substring(line.indexOf(" ")+ 1, line.length());
+			String vert2 = line.substring(0, line.indexOf(" "));
+			int weight =  Integer.parseInt(line.substring(line.indexOf(" ")+1, line.length()));
 
-			//process (parse) string
+			System.out.println(vert1 +"|" + vert2 +"|"+ weight);
+
+
+			Vertex temp1 = new Vertex(vert1);
+			Vertex temp2 = new Vertex(vert2);
+
 
 			//make vertex(es)
 
@@ -39,7 +41,6 @@ public class AdjacencyListTemplate {
 
 	public String toString(){
 		return "";
-
 	}
 
 	public static void main(String[] args){

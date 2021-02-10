@@ -14,6 +14,7 @@ public class GraphTester{
 			vertexes.add(new Vertex("william"));
 			vertexes.add(new Vertex("swann"));
 			Vertex m = vertexes.get(0);
+			Vertex n = vertexes.get(2);
 			vertexes.get(0).setName("hello");
 			m.addNeighbor(vertexes.get(1), 32);
 			m.addNeighbor(vertexes.get(2), 232);
@@ -22,6 +23,7 @@ public class GraphTester{
 			m.addNeighbor(vertexes.get(4), 21);
 			m.addNeighbor(vertexes.get(0), 22);
 			System.out.println(m.AdjacentVerts());
+			System.out.println(m.weightNeighbor(n));
 
 
 
