@@ -5,6 +5,7 @@ public class Vertex{
 
     public Vertex(String name){
       this.name = name;
+      isVisited = false;
     }
 
     HashMap<Vertex, Integer> neighbors = new HashMap<Vertex, Integer>();
@@ -43,8 +44,20 @@ public class Vertex{
     }
 
     public void setName(String n){
-      name = n;
-      System.out.println("Name was set to " + n);
+      Boolean c = false;
+      for (Vertex key: neighbors.keySet()) {
+        if(key.name.equals(n)){
+          c = true;
+        }
+      }
+      if (c){
+        System.out.println("chose a different name");
+      }else{
+        name = n;
+        System.out.println("Name was set to " + n);
+      }
+
+
     }
 
     public String AdjacentVerts(){
@@ -54,6 +67,10 @@ public class Vertex{
 
       }
       return toReturn;
+    }
+
+    public String toString(){
+      return AdjacentVerts();
     }
 
 

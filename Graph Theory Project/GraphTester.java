@@ -8,14 +8,14 @@ public class GraphTester{
 
 
 
-			vertexes.add(new Vertex("hi"));
-			vertexes.add(new Vertex("alexander"));
-			vertexes.add(new Vertex("andrew"));
-			vertexes.add(new Vertex("william"));
-			vertexes.add(new Vertex("swann"));
+			vertexes.add(new Vertex("r"));
+			vertexes.add(new Vertex("a"));
+			vertexes.add(new Vertex("d"));
+			vertexes.add(new Vertex("b"));
+			vertexes.add(new Vertex("c"));
 			Vertex m = vertexes.get(0);
 			Vertex n = vertexes.get(2);
-			vertexes.get(0).setName("hello");
+			vertexes.get(0).setName("a");
 			m.addNeighbor(vertexes.get(1), 32);
 			m.addNeighbor(vertexes.get(2), 232);
 			m.addNeighbor(vertexes.get(3), 320);

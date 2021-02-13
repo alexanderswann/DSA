@@ -22,3 +22,5 @@ G K 1
 G L 1
 G D 1
 N I 1
+N I 1
+G K 1
