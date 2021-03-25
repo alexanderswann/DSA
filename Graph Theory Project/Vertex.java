@@ -3,9 +3,11 @@ public class Vertex{
     String name;
     boolean isVisited;
 
+
     public Vertex(String name){
       this.name = name;
       isVisited = false;
+
     }
 
     HashMap<Vertex, Integer> neighbors = new HashMap<Vertex, Integer>();
@@ -15,8 +17,20 @@ public class Vertex{
           System.out.println("you are trying to add a vertex to its own adjacency list");
         }else{
           neighbors.put(v, edge_weight);
+          //v.addNeighbor(vert, edge_weight);
         }
 
+    }
+
+
+
+    public Vertex getNeighbor(String v){
+      for (Vertex key: neighbors.keySet()) {
+        if(key.name.equals(v)){
+          return key;
+        }
+      }
+      return null;
     }
 
     public int weightNeighbor(Vertex v){
@@ -60,7 +74,7 @@ public class Vertex{
 
     }
 
-    public String AdjacentVerts(){
+    public String AdjacentVerts2(){
       String toReturn = name + ": ";
       for (Vertex key: neighbors.keySet()) {
           toReturn += "<" + key.name + ", " + neighbors.get(key) + "> ";
@@ -69,8 +83,22 @@ public class Vertex{
       return toReturn;
     }
 
+    public ArrayList<Vertex> AdjacentVerts(){
+      ArrayList<Vertex> toReturn = new ArrayList<Vertex>();
+      for (Vertex key: neighbors.keySet()) {
+          toReturn.add(key);
+
+      }
+      return toReturn;
+    }
+
     public String toString(){
-      return AdjacentVerts();
+      String toReturn = name + ": ";
+      for (Vertex key: neighbors.keySet()) {
+          toReturn += "<" + key.name + ", " + neighbors.get(key) + "> ";
+
+      }
+      return name;
     }
 
 

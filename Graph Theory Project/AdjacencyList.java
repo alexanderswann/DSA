@@ -68,10 +68,14 @@ public class AdjacencyList {
 		}
 	}
 
+	public int size(){
+		return vertexes.size();
+	}
+
 	public String toString(){
 		String toReturn = "";
 		for (Vertex v: vertexes) {
-			toReturn += v.AdjacentVerts() + "\n";
+			toReturn += v.AdjacentVerts2() + "\n";
 		}
 		return toReturn;
 	}

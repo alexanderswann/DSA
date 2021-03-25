@@ -1,3 +1,8 @@
-A B 4
-A C 10
-A D 3
+L N 5
+M L 1
+M O 6
+N M 2
+N P 1
+O N 3
+P L 8
+P O 4
