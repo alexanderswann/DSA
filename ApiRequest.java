@@ -25,9 +25,9 @@ public class ApiRequest {
     conn.setDoOutput(true);
     conn.setRequestMethod("GET");
     conn.setRequestProperty( "Accept", type );
-    conn.setRequestProperty( "Authorization", "Bearer BQBXfrZvR3TjmtvXV22roKKYC_0V6yywTxH_vAP-UFS2nqqxULxCJPk1Tf2flxj5HQD1NghwheiXVs59M8LCQh5pP0HYv2Oh-ZIHLmcUox7FI55xJNuolyuL2Z85oT0n68dy5AYCFhao5n65QmvIOwsvMaGtJvZT7ODMiLUbWwIE7021QQS8UDJLuqEm1irfvL3CmAt-S8cwuPxvJUyM9gtH0RQ5FOYvV8VmKtx3YUoLrHzhTrtS6YU6GcWISodIYix6EMYrfHQQCRyYMXg" );
+    conn.setRequestProperty( "Authorization", "Bearer AQD0zrPkvbYTXoSUs34Zxq1RTpfDsar2uEvSDOc9lEnD2LY5o3a2dbkQemmvigVFyBxIhBu4mgC36W0wxeFIykY9xkXUKWfHNTU6P92siaF_OxdpzLX-WUnzseZzvqK6wwG5TeGB7Wca5r72E39878XCoN-KYnNHBAvqRec_o8HWFflAqQ16K5Iy4KJh79MeHAomU3vXT7Tk_ZImqmppzAAjTjXOkZwb" );
   //  conn.setRequestProperty( "Content-Length", String.valueOf(encodedData.length()));
-
+//https://www.spotify.com/us/home/?code=AQCmBnKOxs9xNxNyjZGiqfyH6fZl3K4CC9Q5Cu5kgvT4S7ZYK21jaeqJGrJ-AVXJ5jF0ftlAHkCiw9aCJqoSr74a-fWGGEXOr6thyKsZhSluia8vs_V-6FbHzsjwa44o3r7Yh9sHoRZ9SgHCByaCVny5RddVMooPomN91SbGKch2HIxU
     // Object os = conn.getContent();
     // System.out.println(conn.toString());
 

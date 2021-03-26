@@ -4,26 +4,35 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.*;
+import java.io.*;
 import java.lang.*;
 
-/*
-    1) https://developer.spotify.com/dashboard/applications
-*/
+
 
 public class SpotifyMain {
 
     static final String CLIENTID = "42f6854dd8ed4408a4ad3a7b52303250";
-    static final String CLIENTSECRET = "5a31444793994dc69698e047ddb8b380";
+    static final String CLIENTSECRET = "90cf7eab479e4773945085484f3c2df4";
+    static final String CLIENTIDQ = "NDJmNjg1NGRkOGVkNDQwOGE0YWQzYTdiNTIzMDMyNTA=";
+    static final String CLIENTSECREQ = ":OTBjZjdlYWI0NzllNDc3Mzk0NTA4NTQ4NGYzYzJkZjQ=";
     static final String REDIRECTURL = "https://www.spotify.com/us/home/"; //whiltelisted set inside spotify
+    static final String scopes = "%2cugc-image-upload%2cuser-read-recently-played%2cuser-top-read%2cuser-read-playback-position%2cuser-read-playback-state%2cuser-modify-playback-state%2cuser-read-currently-playing%2capp-remote-control%2cstreaming%2cplaylist-modify-public%2cplaylist-modify-private%2cplaylist-read-private%2cplaylist-read-collaborative%2cuser-follow-modify%2cuser-follow-read%2cuser-library-modify%2cuser-library-read%2c";
+    static final String refresh = "AQAzBYsvuKvMUj9bwTlghZal_d07EO9HHW4rblI-_aypVs31vJ89qdcHwwTmi0jfVJhQop9frRtilFFrFGaEU8-zdf9blr71qP8-BIWOzvgLxGY6pZi1ZGZWOSDqG7GrDmo";
+    //https://www.spotify.com/us/home/?code=&state=34fFs29kd09
 
     public static void main(String[] args) {
         try {
             String url_auth =
-            "https://accounts.spotify.com/authorize?"
-            + "client_id="+CLIENTID+"&"
-            + "response_type=code&"
-            + "redirect_uri="+REDIRECTURL;
+                "https://accounts.spotify.com/authorize?" +
+                "client_id=" + CLIENTID + "&" +
+                "response_type=code&" +
+                "redirect_uri=" + REDIRECTURL + "&scope=user-read-private%2cuser-read-email" + scopes + "&state=34fFs29kd09";
+
+            String code;
+
+            String url_code = "https://accounts.spotify.com/api/token?grant_type=authorization_code" + "&code=" + "AQCYpxlzwxtpiPpGE08Uk307T2wH0sZ8qLMNi_owGzSe2FFAVxN3jycnLOPHlGJyI_emdsho_b8EN-UxKZg32JL9MQRaavxjqqZY4dSLv5ebBKl-vBiYivxVi7v39DIE9mR7Aq6NvaoGjT0PGyKnPp-Un6XHw0nu_cHPRh4j1OUU79CIs-ldFQt1kASpn1kkX9bTB9rpLH4CyMzqY9rcmXMbyM-cKmVbbnhHVGpWbnxUpzwSEUpZ4CddFyB5l7htwgV0KrlUT0SbC-GXZ-zLb5_5UPCENPBtKaUtHFnCgGSvQ_qqvvjEbkoQRRbVj3fUE8ZyX2Gab4cB_rhefJAijOqSVIDQvCmjY2RbIowtGXDohJ1hgAtzybNC8NZGhYzzZj_eMq5Hmof06HQSrMOFhYZBR3Iu32zd3Gw6dZetPq9hw-pm4Sy5mUL9yqv3qKYEiTMloTFQ-eKQd88rDCa5wocT0ksbCvDgfkgxH_ENP22X6Xhc8gsgIa1VDsZOxtw0hShQw1YbpF284f-rAoHcUm-OzYZyE2mZ1dJ4cNXZz-FFez146JgRRs0PZIc2lyeZkehHOuPFCaUbO7UrdwmlTSEHjrhxootsgblCRA09fNOXR6tajL9Ku9RkzptY5avNG7YpFEP-V6xEsUjjkbxS0Z57LybQj4T_FtK1V4W8N0gCbaoHSgn0bfi_zobN9QD9N1D7bIIbO-YrrvxgMmpoZ1UbuWDCHQ" + "&redirect_uri=" + REDIRECTURL + "&client_id=" + CLIENTID + "&client_secret=" + CLIENTSECRET; //+ "&Content-Length: 0";
+
+            String url_refresh = "https://accounts.spotify.com/api/token?grant_type=refresh_token&refresh_token=AQAzBYsvuKvMUj9bwTlghZal_d07EO9HHW4rblI-_aypVs31vJ89qdcHwwTmi0jfVJhQop9frRtilFFrFGaEU8-zdf9blr71qP8-BIWOzvgLxGY6pZi1ZGZWOSDqG7GrDmo" + "&client_id=" + CLIENTID + "&client_secret=" + CLIENTSECRET; // +refresh;
 
             System.out.println(url_auth);
 
@@ -32,23 +41,61 @@ public class SpotifyMain {
             conn.setRequestMethod("GET");
             conn.setDoOutput(true);
 
-          //  conn.setRequestProperty("Accept", "application/json");
+            URL url2 = new URL(url_code);
+            HttpURLConnection conn2 = (HttpURLConnection) url2.openConnection();
+            conn2.setDoOutput(true);
+            conn2.setRequestMethod("POST");
+            //conn2.setRequestProperty("Content-Length", "0.0");
+            conn2.setFixedLengthStreamingMode(0);
 
-            // if (conn.getResponseCode() != 200) {
-            //     throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
-            // }
+            conn2.connect();
 
-            // OutputStream os = conn.getOutputStream();
-            // os.write(encodedData.getBytes());
-            String cash = conn.getResponseMessage();
+            System.out.println(url2);
+
+
+            URL url3 = new URL(url_refresh);
+            HttpURLConnection conn3 = (HttpURLConnection) url3.openConnection();
+            conn3.setDoOutput(true);
+            conn3.setRequestMethod("POST");
+            //conn3.setRequestProperty("Authorization", "Basic " + CLIENTIDQ+CLIENTSECREQ );
+            conn3.setFixedLengthStreamingMode(0);
+
+            conn3.connect();
+
+
+            String cash = conn3.getResponseMessage();
             System.out.println(cash);
-            BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+            BufferedReader br = new BufferedReader(new InputStreamReader((conn3.getInputStream())));
 
+            String output2 = "";
+            String token = "";
             String output;
             System.out.println("Output from Server .... \n");
             while ((output = br.readLine()) != null) {
                 System.out.println(output);
+                output2 += output;
             }
+            System.out.println(output2);
+
+            token = output2.substring(17, output2.substring(17).indexOf('"') + 17);
+            //{"access_token":"BQBN
+            System.out.println(token);
+
+            URL u = new URL("https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=50");
+            HttpURLConnection conn4 = (HttpURLConnection) u.openConnection();
+            conn4.setDoOutput(true);
+            conn4.setRequestMethod("GET");
+            conn4.setRequestProperty("Accept", "application/json");
+            conn4.setRequestProperty("Authorization", "Bearer " + token);
+
+            BufferedReader br2 = new BufferedReader(new InputStreamReader((conn4.getInputStream())));
+
+            String output3;
+            System.out.println("Output from Server .... \n");
+            while ((output3 = br2.readLine()) != null) {
+                System.out.println(output3);
+            }
+
             //conn.disconnect();
         } catch (MalformedURLException e) {
             e.printStackTrace();
