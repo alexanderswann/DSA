@@ -24,7 +24,7 @@ public class ApiRequest {
     HttpURLConnection conn = (HttpURLConnection) u.openConnection();
     conn.setDoOutput(true);
     conn.setRequestMethod("GET");
-    conn.setRequestProperty( "Accept", type );
+    conn.setRequestProperty( "Accept", "application/json" );
     conn.setRequestProperty( "Authorization", "Bearer AQD0zrPkvbYTXoSUs34Zxq1RTpfDsar2uEvSDOc9lEnD2LY5o3a2dbkQemmvigVFyBxIhBu4mgC36W0wxeFIykY9xkXUKWfHNTU6P92siaF_OxdpzLX-WUnzseZzvqK6wwG5TeGB7Wca5r72E39878XCoN-KYnNHBAvqRec_o8HWFflAqQ16K5Iy4KJh79MeHAomU3vXT7Tk_ZImqmppzAAjTjXOkZwb" );
   //  conn.setRequestProperty( "Content-Length", String.valueOf(encodedData.length()));
 //https://www.spotify.com/us/home/?code=AQCmBnKOxs9xNxNyjZGiqfyH6fZl3K4CC9Q5Cu5kgvT4S7ZYK21jaeqJGrJ-AVXJ5jF0ftlAHkCiw9aCJqoSr74a-fWGGEXOr6thyKsZhSluia8vs_V-6FbHzsjwa44o3r7Yh9sHoRZ9SgHCByaCVny5RddVMooPomN91SbGKch2HIxU
