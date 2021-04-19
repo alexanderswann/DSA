@@ -80,7 +80,7 @@ public class SpotifyMain {
             token = output2.substring(17, output2.substring(17).indexOf('"') + 17);
             System.out.println(token);
 
-            URL u = new URL("https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5");
+            URL u = new URL("https://api.spotify.com/v1/me");
             HttpURLConnection conn4 = (HttpURLConnection) u.openConnection();
             conn4.setDoOutput(true);
             conn4.setRequestMethod("GET");
