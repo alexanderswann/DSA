@@ -40,8 +40,8 @@
   data() {
     return {
       client_id: '42f6854dd8ed4408a4ad3a7b52303250',
-      scopes: 'user-top-read',
-      redirect_uri: 'file:///C:/Users/Dell/Documents/GitHub/DSA/index.html',
+      scopes:  '%2cugc-image-upload%2cuser-read-recently-played%2cuser-top-read%2cuser-read-playback-position%2cuser-read-playback-state%2cuser-modify-playback-state%2cuser-read-currently-playing%2capp-remote-control%2cstreaming%2cplaylist-modify-public%2cplaylist-modify-private%2cplaylist-read-private%2cplaylist-read-collaborative%2cuser-follow-modify%2cuser-follow-read%2cuser-library-modify%2cuser-library-read%2c',
+      redirect_uri: 'https://alexanderswann.github.io/DSA/',
       me: null
     }
   },
