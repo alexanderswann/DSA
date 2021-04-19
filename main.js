@@ -70,7 +70,7 @@ function topsongs(){
     this.token = window.location.hash.substr(1).split('&')[0].split("=")[1]
 
     if (this.token) {
-      //alert(this.token)
+      alert(this.token)
       this.my_token = this.token
 
       window.opener.spotifyCallback(this.token)
