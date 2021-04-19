@@ -51,11 +51,13 @@ public class SpotifyMain {
             System.out.println(url2);
 
 
+
+
             URL url3 = new URL(url_refresh);
             HttpURLConnection conn3 = (HttpURLConnection) url3.openConnection();
             conn3.setDoOutput(true);
             conn3.setRequestMethod("POST");
-            conn3.setFixedLengthStreamingMode(0); 
+            conn3.setFixedLengthStreamingMode(0);
             //
 
             conn3.connect();
@@ -88,6 +90,7 @@ public class SpotifyMain {
             BufferedReader br2 = new BufferedReader(new InputStreamReader((conn4.getInputStream())));
 
             String output3;
+            System.out.println(u);
             System.out.println("Output from Server .... \n");
             while ((output3 = br2.readLine()) != null) {
                 System.out.println(output3);

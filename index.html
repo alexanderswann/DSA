@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="index.css">
+    <title></title>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17-beta.0/vue.js></script>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/localforage/1.7.3/localforage.min.js></script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  </head>
+
+  <body>
+
+    <nav>
+
+      <ul>
+
+        <li><a href="portfolio.html">Playlist Maker</a></li>
+        <li><a href="portfolio.html">Song Reccomender</a></li>
+        <li><a href="portfolio.html">Sign In</a></li>
+        <li><a href="Home.html">Home</a></li>
+      </ul>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <button id="topsongs">Get Top Songs </button>:
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+<main id="app">
+  <template v-if="me">
+    {{ me }}
+  </template>
+  <template v-else>
+    <button @click="login">Login with Spotify</button>
+  </template>
+</main>
+
+<script src="main.js"></script>
+
+  </body>
+</html>

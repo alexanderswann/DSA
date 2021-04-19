@@ -1,0 +1,25 @@
+
+  nav ul {
+    text-align: center;
+      position: fixed;
+      list-style-type: none;
+      margin: 0;
+      width: 100%;
+      padding: 0;
+      overflow: hidden;
+      background-color: #0D0B35;
+      font-family: 'Rubik', sans-serif;
+  }
+  nav li {
+    float: left;
+  }
+
+  nav li a {
+    display: block;
+    color: white;
+    padding: 22px 16px 16px 16px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 40px;
+    font-family: 'Rubik', sans-serif;
+  }

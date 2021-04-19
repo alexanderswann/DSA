@@ -1,0 +1,20 @@
+.home_pics_list li {
+  list-style-type: none;
+}
+
+ .home_pics{
+    display: block;
+    margin: 30px auto;
+
+    width: 60%;
+    height: 60%;
+    -webkit-transition: width 1s;
+        transition: width 1s;
+}
+
+.home_pics:hover {
+
+    width:70%;
+    height:auto;
+
+}
