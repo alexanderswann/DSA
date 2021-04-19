@@ -47,7 +47,7 @@ function topsongs(){
 
         popup.close()
 
-        fetch('https://api.spotify.com/v1/me', {
+        fetch('https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5', {
           headers: {
             'Authorization': `Bearer ${payload}`
           }
