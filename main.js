@@ -57,8 +57,8 @@ function topsongs(){
     },
 
     topsongs() {
-      //fetch('https://accounts.spotify.com/api/token?grant_type=authorization_code&code=' + this.me + '&redirect_uri=' + this.redirect_uri + '&client_id=' + this.client_id + '&client_secret=' + 'CLIENTSECRET').then(response => {return response.json()}).then(data2 => {this.top = data2})
-      this.top = "cash monehy"
+      fetch('https://accounts.spotify.com/api/token?grant_type=authorization_code&code=' + this.token + '&redirect_uri=' + this.redirect_uri + '&client_id=' + this.client_id + '&client_secret=' + 'CLIENTSECRET').then(response => {return response.json()}).then(data2 => {this.top = data2})
+      //this.top = this.me
 
     }
 
