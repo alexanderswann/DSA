@@ -32,7 +32,8 @@ function topsongs(){
       my_scopes:  '%2cugc-image-upload%2cuser-read-recently-played%2cuser-top-read%2cuser-read-playback-position%2cuser-read-playback-state%2cuser-modify-playback-state%2cuser-read-currently-playing%2capp-remote-control%2cstreaming%2cplaylist-modify-public%2cplaylist-modify-private%2cplaylist-read-private%2cplaylist-read-collaborative%2cuser-follow-modify%2cuser-follow-read%2cuser-library-modify%2cuser-library-read%2c',
       redirect_uri: 'https://alexanderswann.github.io/DSA/',
       me: null,
-      top: null
+      top: null,
+      token: null
     }
   },
   methods: {
@@ -57,7 +58,7 @@ function topsongs(){
     },
 
     topsongs() {
-      fetch('https://accounts.spotify.com/api/token?grant_type=authorization_code&code=' + this.token + '&redirect_uri=' + this.redirect_uri + '&client_id=' + this.client_id + '&client_secret=' + 'CLIENTSECRET').then(response => {return response.json()}).then(data2 => {this.top = data2})
+      fetch('https://accounts.spotify.com/api/token?grant_type=authorization_code&code=' + this.token + '&redirect_uri=' + this.redirect_uri + '&client_id=' + this.client_id + '&client_secret=' + '90cf7eab479e4773945085484f3c2df4').then(response => {return response.json()}).then(data2 => {this.top = data2})
       //this.top = this.me
 
     }
