@@ -62,7 +62,7 @@ function topsongs(){
     topsongs() {
       fetch('https://api.spotify.com/v1/mehttps://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5', {
         headers: {
-          'Authorization': `Bearer ${payload}`
+          'Authorization': `Bearer ${my_token}`
         }
       }).then(response => {
         return response.json()
