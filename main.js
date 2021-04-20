@@ -13,11 +13,7 @@
 //
 // }
 //
-function topsongs(){
 
-  var url_code = "https://accounts.spotify.com/api/token?grant_type=authorization_code" + "&code=" + app.me + "&redirect_uri=" + REDIRECTURL + "&client_id=" + CLIENTID + "&client_secret=" + CLIENTSECRET;
-  loadJSON(url_code);
-}
 
 
 
