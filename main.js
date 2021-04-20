@@ -73,10 +73,7 @@ function topsongs(){
 
     if (this.token) {
       alert(this.token)
-      var i;
-      for (i = 0; i < this.token.length; i++) {
-        this.my_token += this.token[i];
-      }
+      
 
 
       window.opener.spotifyCallback(this.token)
