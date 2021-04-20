@@ -13,7 +13,11 @@
 //
 // }
 //
+function topsongs(){
 
+  var url_code = "https://accounts.spotify.com/api/token?grant_type=authorization_code" + "&code=" + app.me + "&redirect_uri=" + REDIRECTURL + "&client_id=" + CLIENTID + "&client_secret=" + CLIENTSECRET;
+  loadJSON(url_code);
+}
 
 
 
@@ -37,15 +41,15 @@
       let popup = window.open(`https://accounts.spotify.com/authorize?client_id=${this.client_id}&response_type=token&redirect_uri=${this.redirect_uri}&scope=${this.my_scopes}&show_dialog=true`, 'Login with Spotify', 'width=800,height=600')
 
       window.spotifyCallback = (payload) => {
-        //alert(payload)
+        alert(payload)
 
         this.my_token = payload
 
         popup.close()
 
-        fetch('https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5', {
+        fetch('https://api.spotify.com/v1/me', {
           headers: {
-            'Authorization': `Bearer ${payload}
+            'Authorization': `Bearer ${payload}`
           }
         }).then(response => {
           return response.json()
@@ -69,10 +73,10 @@
 
     if (this.token) {
       alert(this.token)
-      // var i;
-      // for (i = 0; i < this.token.length; i++) {
-      //   this.my_token += this.token[i];
-      // }
+      var i;
+      for (i = 0; i < this.token.length; i++) {
+        this.my_token += this.token[i];
+      }
 
 
       window.opener.spotifyCallback(this.token)
