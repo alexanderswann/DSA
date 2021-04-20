@@ -60,9 +60,10 @@ function topsongs(){
     },
 
     topsongs() {
+      alert(this.my_token)
       fetch('https://api.spotify.com/v1/mehttps://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5', {
         headers: {
-          'Authorization': `Bearer ${my_token}`
+          'Authorization': `Bearer ${this.my_token}`
         }
       }).then(response => {
         return response.json()
@@ -70,7 +71,7 @@ function topsongs(){
         this.top = data
         alert(data)
       })
-      alert(my_token)
+
 
       //fetch('https://accounts.spotify.com/api/token?grant_type=authorization_code&code=' + this.my_token + '&redirect_uri=' + this.redirect_uri + '&client_id=' + this.client_id + '&client_secret=' + '90cf7eab479e4773945085484f3c2df4').then(response => {return response.json()}).then(data2 => {this.top = data2})
       //alert('https://accounts.spotify.com/api/token?grant_type=authorization_code&code=' + this.my_token + '&redirect_uri=' + this.redirect_uri + '&client_id=' + this.client_id + '&client_secret=' + '90cf7eab479e4773945085484f3c2df4')

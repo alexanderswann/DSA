@@ -23,3 +23,39 @@
     font-size: 40px;
     font-family: 'Rubik', sans-serif;
   }
+     #container {
+          width: 700px;
+          margin: auto;
+          border: 1px solid red;
+          overflow: hiden;
+          height: 135px;
+          float: left;
+        }
+
+        #img-container {
+          float: left;
+          border: 1px solid red;
+          width: 125px;
+          height: 125px;
+          margin-top: 10px;
+          margin-bottom: 10px;
+          margin-left: 4px;
+        }
+
+        .text-container {
+          border: 1px solid green;
+          float: left;
+          width: 340px;
+          height: 280px;
+          margin-left: 10px;
+          margin-top: 10px;
+        }
+
+        .product-info {
+          border: 1px solid blue;
+          height: 75px;
+          margin-left: 10px;
+          margin-right: 10px;
+          margin-top: 9px;
+          overflow: hidden;
+        }
