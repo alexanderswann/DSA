@@ -12,7 +12,9 @@ var datatopsongs = null;
 //   	button.mousePressed(topsongs);
 //
 // }
+function printtop(
 
+)
 
 //
 
@@ -64,10 +66,11 @@ var datatopsongs = null;
           'Authorization': `Bearer ${this.my_token}`
         }
       }).then(response => {
+        datatopsongs = response.json();
         return response.json()
       }).then(data => {
         this.top = data
-        datatopsongs = data
+        //datatopsongs = data
 
       })
 
