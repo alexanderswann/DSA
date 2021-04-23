@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="index.css">
     <title></title>
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
-    <script src=https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17-beta.0/vue.js></script>
-    <script src=https://cdnjs.cloudflare.com/ajax/libs/localforage/1.7.3/localforage.min.js></script>
+
+    <script src="main.js"></script>
+
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -44,22 +44,14 @@
 
 
 
-<div id="app">
-  <template v-if="me">
-        {{ me }}
-        <template v-if="top">
-          {{ top }}
+          <input id="login" type="button" value="clickme" onclick="login();" />
 
-        </template>
-        <template v-else>
-            <br>
-            <button @click="topsongs">Get Top Songs?w</button>:
-        </template>
-  </template>
-  <template v-else>
-    <button @click="login">Login with Spotify</button>
-  </template>
-</div>
+            <button id="topsongs">Get Top Songs?w</button>:
+            <div id="T"></div>
+
+    <button id="login">Login with Spotify</button>
+    <div id="D"></div>
+
 
 <div id ="list">
 <div class="container">
@@ -72,7 +64,6 @@
 
     </div>
 
-    <script src="main.js"></script>
 
 
   </body>
