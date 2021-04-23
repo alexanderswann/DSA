@@ -5,15 +5,46 @@
 // var REDIRECTURL = "https://www.spotify.com/us/home/";
 // var scopes = "%2cugc-image-upload%2cuser-read-recently-played%2cuser-top-read%2cuser-read-playback-position%2cuser-read-playback-state%2cuser-modify-playback-state%2cuser-read-currently-playing%2capp-remote-control%2cstreaming%2cplaylist-modify-public%2cplaylist-modify-private%2cplaylist-read-private%2cplaylist-read-collaborative%2cuser-follow-modify%2cuser-follow-read%2cuser-library-modify%2cuser-library-read%2c";
 // var refresh = "AQAzBYsvuKvMUj9bwTlghZal_d07EO9HHW4rblI-_aypVs31vJ89qdcHwwTmi0jfVJhQop9frRtilFFrFGaEU8-zdf9blr71qP8-BIWOzvgLxGY6pZi1ZGZWOSDqG7GrDmo";
-var datatopsongs = null;
+var datatopsongs = '';
 // function setup(){
 //
 //     var button = select('#topsongs');
 //   	button.mousePressed(topsongs);
 //
 // }
-function printtop(){
-  
+function printtop(top){
+  console.log(top);
+  alert("hello")
+
+  var title = "";
+  var img  = "";
+  var artists   = "";
+
+
+  for (var i = 0; i < top.items.length; i++) {
+    var title = top.items[i].name;
+    var artists = "";
+
+    for(var j = 0; j < top.items[i].artists.length; j++) {
+
+      // artists += top.items[i].artists[j].name + ", ";
+      // console.log(j);
+      // console.log(top.items[i].artists.length);
+      if(j < top.items[i].artists.length -1){
+          artists += top.items[i].artists[j].name + ", ";
+
+      }else {
+        artists += top.items[i].artists[j].name;
+      }
+
+    }
+    var img = top.items[i].album.images[1].url
+
+    console.log(title);
+    console.log(img);
+    console.log(artists);
+}
+
 }
 
 //
@@ -60,12 +91,23 @@ function printtop(){
     },
 
     topsongs() {
-      alert(this.my_token)
-      datatopsongs = fetch('https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5', {
-        headers: {'Authorization': `Bearer ${this.my_token}`}
+      //alert(this.my_token)
+      fetch('https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5', {
+        headers: {
+          'Authorization': 'Bearer BQBMoRuYTmidKt7Z-OvzWjcX-F0AQv41eAAOgpzTYoonHfLOMMJwmzizEPsO0aAbmzF329tus-tbQ_kDfAzotrR3EO_14eFNzvuGkNzB9lVB_w5_WFzTEhFEGmk33FBOADfwHoozuJ3SIYy6qmOtZRm48Qv0nlUHXyS47BHw5_gsKqn2X1ged5awEZCkzOVFAai0nbaECNmVfAjFXG_xeeI7C9Q1Ip10E3wSI72Ebh2qp3XVhg56fHVfxcU-jNIXKpahqX4Btf4jd86LZbjLPSEQf_c'//`Bearer ${this.my_token}`
+        }
+      }).then(response => {
+        return response.json()
+      }).then(data => {
+        printtop(data)
+
+
+
       })
 
-      alert(datatopsongs);
+
+
+      alert(this.top);
       dataout();
 
 
@@ -96,9 +138,9 @@ function printtop(){
         }
         var img = top.items[i].album.images[1].url
 
-        alert(title)
-        alert(img)
-        alert(artists)
+        console.log(title);
+        console.log(img);
+        console.log(artists);
     }
 
 
