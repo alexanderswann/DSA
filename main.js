@@ -71,22 +71,9 @@ function topsongs(){
         this.top = data
 
       })
-      alert(this.top)
+      dataout()
 
-      this.top = JSON.parse(this.top)
 
-      for (var i = 0; i < top.items.length; i++) {
-        var title = top.items[i].name;
-        var artits = "";
-
-        for(var j = 0; i < top.items[i].artists.length; i++) {
-          artists += top.items[i].artists[j];
-        }
-        var img = top.items[i].album.images[1].url
-
-        alert(title)
-        alert(img)
-        alert(artists)
 
       }
 
