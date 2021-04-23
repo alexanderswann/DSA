@@ -72,7 +72,7 @@ function topsongs(){
 
       })
         dataout()
-      
+
 
       }
 
@@ -86,7 +86,9 @@ function topsongs(){
 
     dataout(){
       alert(this.top)
-
+      var title
+      var img
+      var artists
       this.top = JSON.parse(this.top)
 
       for (var i = 0; i < top.items.length; i++) {
