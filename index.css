@@ -23,15 +23,43 @@
     font-size: 40px;
     font-family: 'Rubik', sans-serif;
   }
+
+  .list2 li{
+    display: block;
+  }
+  .list2 ul{
+    display: block;
+  }
+  .list2{
+    display: block;
+    float: none;
+  }
+
+
      .container {
           width: auto;
           margin: auto;
           border: 1px solid red;
           overflow: hidden;
           height: auto;
-          float: left;
+          float: none;
           margin-top: 10px;
           margin-bottom: 10px;
+          margin-right: 10px;
+          margin-left: 10px;
+
+
+        }
+
+        .number{
+          font-size: 40px;
+          float: left;
+          border: 1px solid black;
+          width: auto;
+          height: auto;
+          margin-top: 50px;
+          margin-bottom: 10px;
+          margin-left: 4px;
         }
 
         .img-container {
@@ -53,11 +81,18 @@
           margin-right: 10px;
           margin-bottom: auto;
           margin-top: 15px;
+          overflow: hidden;
+        }
+
+        .realimg {
+           width: 125px;
+           height: auto;
         }
 
         .product-info {
           border: 1px solid blue;
-          height: auto;
+          height: 48px;
+          width: auto;
           margin-left: 5px;
           margin-right: 5px;
           margin-top: 5px;
