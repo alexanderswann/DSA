@@ -177,7 +177,7 @@ function breaks(){
       //alert(this.my_token)
       fetch('https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=50', {
         headers: {
-          'Authorization': 'Bearer BQChB1cyLGz66SZqax2CM6lpEG8jFDHppZtDxmlzNtyz_LIlNIAu5qWKRMC6tMwkK5WE4z_GfO6SHEcywknltbQf9lZc_6DE9PsT6A1V_BmBW2pvzAMWFrM8lPHvHCjrFcIQMrLaPEwf8c5KAv4SsYY7LtNXY0oBFqDQ_C2cmoJIYQgXSfhrG0_xO7nLV0Vgqt8xngfN19XoJQxny9bDdT4q4SoHVBYlsDITQgwtKNbdTUvIy6HohmP4wtq5hH_vD9vvR81WLsznuFjJh5QLlJoTBFI'//`Bearer ${this.my_token}`
+          'Authorization': `Bearer ${this.my_token}`//'Bearer BQChB1cyLGz66SZqax2CM6lpEG8jFDHppZtDxmlzNtyz_LIlNIAu5qWKRMC6tMwkK5WE4z_GfO6SHEcywknltbQf9lZc_6DE9PsT6A1V_BmBW2pvzAMWFrM8lPHvHCjrFcIQMrLaPEwf8c5KAv4SsYY7LtNXY0oBFqDQ_C2cmoJIYQgXSfhrG0_xO7nLV0Vgqt8xngfN19XoJQxny9bDdT4q4SoHVBYlsDITQgwtKNbdTUvIy6HohmP4wtq5hH_vD9vvR81WLsznuFjJh5QLlJoTBFI'
 
         }
       }).then(response => {
