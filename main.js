@@ -155,7 +155,7 @@ function breaks(){
       var popup = window.open(`https://accounts.spotify.com/authorize?client_id=${this.client_id}&response_type=token&redirect_uri=${this.redirect_uri}&scope=${this.my_scopes}&show_dialog=true`, 'Login with Spotify', 'width=800,height=600')
 
       window.spotifyCallback = (payload) => {
-        alert(payload)
+        //alert(payload)
 
         this.my_token = payload
 
@@ -191,8 +191,7 @@ function breaks(){
 
 
 
-      alert(this.top);
-      dataout();
+
 
 
 
@@ -204,33 +203,7 @@ function breaks(){
       //alert('https://accounts.spotify.com/api/token?grant_type=authorization_code&code=' + this.my_token + '&redirect_uri=' + this.redirect_uri + '&client_id=' + this.client_id + '&client_secret=' + '90cf7eab479e4773945085484f3c2df4')
       //this.top = this.me
 
-    },
-    dataout(){
-      alert("hello")
-      alert(this.top)
-      var title
-      var img
-      var artists
-      this.top = JSON.parse(this.top)
-
-      for (var i = 0; i < top.items.length; i++) {
-        var title = top.items[i].name;
-        var artits = "";
-
-        for(var j = 0; i < top.items[i].artists.length; i++) {
-          artists += top.items[i].artists[j];
-        }
-        var img = top.items[i].album.images[1].url
-
-        console.log(title);
-        console.log(img);
-        console.log(artists);
     }
-
-
-
-
-  }
 
 
   },
@@ -238,7 +211,7 @@ function breaks(){
     this.token = window.location.hash.substr(1).split('&')[0].split("=")[1]
 
     if (this.token) {
-      alert(this.token)
+      //alert(this.token)
 
 
 
