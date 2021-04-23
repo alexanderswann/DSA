@@ -12,6 +12,8 @@ var datatopsongs = null;
 //   	button.mousePressed(topsongs);
 //
 // }
+
+
 //
 
 
@@ -68,7 +70,9 @@ var datatopsongs = null;
         datatopsongs = data
 
       })
-      dataout()
+
+      alert(datatopsongs);
+      dataout();
 
 
 
