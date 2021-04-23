@@ -46,20 +46,20 @@
 
 <div id="app">
   <template v-if="me">
-        {{ me }}
+        <button @click="topsongs">Get Top Songs?w</button>:
+
         <template v-if="top">
-          {{ top }}
+
 
         </template>
         <template v-else>
-            <br>
+            
 
         </template>
   </template>
   <template v-else>
     <button @click="login">Login with Spotify</button>
-    <button @click="topsongs">Get Top Songs?w</button>:
-    {{ top }}
+
   </template>
 </div>
 
