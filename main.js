@@ -69,8 +69,9 @@ function topsongs(){
         return response.json()
       }).then(data => {
         this.top = data
-        alert(data)
+
       })
+      alert(this.top)
 
       this.top = JSON.parse(this.top)
 
