@@ -71,8 +71,22 @@ function topsongs(){
         this.top = data
 
       })
-        dataout()
+      alert(this.top)
 
+      this.top = JSON.parse(this.top)
+
+      for (var i = 0; i < top.items.length; i++) {
+        var title = top.items[i].name;
+        var artits = "";
+
+        for(var j = 0; i < top.items[i].artists.length; i++) {
+          artists += top.items[i].artists[j];
+        }
+        var img = top.items[i].album.images[1].url
+
+        alert(title)
+        alert(img)
+        alert(artists)
 
       }
 
@@ -83,7 +97,6 @@ function topsongs(){
       //this.top = this.me
 
     },
-
     dataout(){
       alert(this.top)
       var title
@@ -104,6 +117,11 @@ function topsongs(){
         alert(img)
         alert(artists)
     }
+
+
+
+
+  }
 
 
   },
