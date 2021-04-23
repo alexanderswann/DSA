@@ -6,6 +6,7 @@
 // var scopes = "%2cugc-image-upload%2cuser-read-recently-played%2cuser-top-read%2cuser-read-playback-position%2cuser-read-playback-state%2cuser-modify-playback-state%2cuser-read-currently-playing%2capp-remote-control%2cstreaming%2cplaylist-modify-public%2cplaylist-modify-private%2cplaylist-read-private%2cplaylist-read-collaborative%2cuser-follow-modify%2cuser-follow-read%2cuser-library-modify%2cuser-library-read%2c";
 // var refresh = "AQAzBYsvuKvMUj9bwTlghZal_d07EO9HHW4rblI-_aypVs31vJ89qdcHwwTmi0jfVJhQop9frRtilFFrFGaEU8-zdf9blr71qP8-BIWOzvgLxGY6pZi1ZGZWOSDqG7GrDmo";
 var datatopsongs = '';
+var user_token = "";
 // function setup(){
 //
 //     var button = select('#topsongs');
@@ -52,6 +53,17 @@ function printtop(top) {
 
     console.log(trackuri);
 
+    playlistMaker(trackuri)
+
+}
+
+function playlistMaker(trackuri){
+
+}
+
+function token (token){
+  user_token = token;
+  console.log(user_token);
 }
 
 function songprinter(title, img, artists, i) {
@@ -175,6 +187,7 @@ const app = new Vue({
 
         topsongs() {
             //alert(this.my_token)
+            token(this.my_token)
             fetch('https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=50', {
                 headers: {
                     'Authorization': `Bearer ${this.my_token}` //'Bearer BQChB1cyLGz66SZqax2CM6lpEG8jFDHppZtDxmlzNtyz_LIlNIAu5qWKRMC6tMwkK5WE4z_GfO6SHEcywknltbQf9lZc_6DE9PsT6A1V_BmBW2pvzAMWFrM8lPHvHCjrFcIQMrLaPEwf8c5KAv4SsYY7LtNXY0oBFqDQ_C2cmoJIYQgXSfhrG0_xO7nLV0Vgqt8xngfN19XoJQxny9bDdT4q4SoHVBYlsDITQgwtKNbdTUvIy6HohmP4wtq5hH_vD9vvR81WLsznuFjJh5QLlJoTBFI'
@@ -184,6 +197,7 @@ const app = new Vue({
                 return response.json()
             }).then(data => {
                 printtop(data)
+
 
 
 
