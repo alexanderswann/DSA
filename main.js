@@ -66,6 +66,10 @@ function token (token){
   console.log(user_token);
 }
 
+function userid(id){
+  console.log(idea);
+}
+
 function songprinter(title, img, artists, i) {
     //   var element = document.createElement("div");
     //   element.appendChild(document.createTextNode('The man who mistook his wife for a hat'));
@@ -130,19 +134,19 @@ function songprinter(title, img, artists, i) {
 
 }
 
-function breaks() {
-    var div = document.getElementById("list");
-
-    // Get all span elements inside of div
-    var spans = div.getElementsByClassName("container");
-
-    // Create a loop which will insert a br element before each span element in div, starting from the second span element
-    var i;
-    for (i = 1; i < spans.length; i++) {
-        var newElem = document.createElement("BR");
-        div.insertBefore(newElem, spans[i]);
-    }
-}
+// function breaks() {
+//     var div = document.getElementById("list");
+//
+//     // Get all span elements inside of div
+//     var spans = div.getElementsByClassName("container");
+//
+//     // Create a loop which will insert a br element before each span element in div, starting from the second span element
+//     var i;
+//     for (i = 1; i < spans.length; i++) {
+//         var newElem = document.createElement("BR");
+//         div.insertBefore(newElem, spans[i]);
+//     }
+// }
 
 
 //
@@ -181,8 +185,10 @@ const app = new Vue({
                     return response.json()
                 }).then(data => {
                     this.me = data
+                    userid(data)
                 })
             }
+            alert(this.me)
         },
 
         topsongs() {
