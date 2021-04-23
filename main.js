@@ -12,9 +12,9 @@ var datatopsongs = null;
 //   	button.mousePressed(topsongs);
 //
 // }
-function printtop(
-
-)
+function printtop(){
+  
+}
 
 //
 
@@ -61,17 +61,8 @@ function printtop(
 
     topsongs() {
       alert(this.my_token)
-      fetch('https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5', {
-        headers: {
-          'Authorization': `Bearer ${this.my_token}`
-        }
-      }).then(response => {
-        datatopsongs = response.json();
-        return response.json()
-      }).then(data => {
-        this.top = data
-        //datatopsongs = data
-
+      datatopsongs = fetch('https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5', {
+        headers: {'Authorization': `Bearer ${this.my_token}`}
       })
 
       alert(datatopsongs);
