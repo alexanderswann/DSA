@@ -23,7 +23,7 @@
     font-size: 40px;
     font-family: 'Rubik', sans-serif;
   }
-     #container {
+     .container {
           width: auto;
           margin: auto;
           border: 1px solid red;
@@ -34,7 +34,7 @@
           margin-bottom: 10px;
         }
 
-        #img-container {
+        .img-container {
           float: left;
           border: 1px solid red;
           width: 125px;
