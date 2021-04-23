@@ -83,7 +83,12 @@ function topsongs(){
         }
         var img = top.items[i].album.images[1].url
 
+        alert(title)
+        alert(img)
+        alert(artists)
+
       }
+
 
 
       //fetch('https://accounts.spotify.com/api/token?grant_type=authorization_code&code=' + this.my_token + '&redirect_uri=' + this.redirect_uri + '&client_id=' + this.client_id + '&client_secret=' + '90cf7eab479e4773945085484f3c2df4').then(response => {return response.json()}).then(data2 => {this.top = data2})
