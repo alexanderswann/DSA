@@ -14,7 +14,7 @@ var datatopsongs = '';
 // }
 function printtop(top) {
     console.log(top);
-    alert("hello")
+    // alert("hello")
 
     var title = "";
     var img = "";
