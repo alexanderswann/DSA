@@ -19,6 +19,7 @@ function printtop(top) {
     var title = "";
     var img = "";
     var artists = "";
+    var trackuri = [];
 
 
     for (var i = 0; i < top.items.length; i++) {
@@ -39,13 +40,17 @@ function printtop(top) {
 
         }
         var img = top.items[i].album.images[1].url
+        trackuri.push(top.items[i].uri);
 
 
         songprinter(title, img, artists, i);
         console.log(title);
         console.log(img);
         console.log(artists);
+
     }
+
+    console.log(trackuri);
 
 }
 
