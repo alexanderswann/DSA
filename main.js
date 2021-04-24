@@ -97,9 +97,9 @@ function addSongs(data, trackuri){
    getRecs(id);
 
 }
-
+//https://cors-anywhere.herokuapp.com/
 function getRecs(playlist_id){
-  var url = 'https://cors-anywhere.herokuapp.com/https://dsa-app.herokuapp.com/v1/rec?id=' + playlist_id + '&auth=' + user_token;
+  var url = 'https://dsa-app.herokuapp.com/v1/rec?id=' + playlist_id + '&auth=' + user_token;
   fetch(url, {
      method: 'GET',
      headers: {
