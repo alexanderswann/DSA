@@ -6,7 +6,7 @@
 // var scopes = "%2cugc-image-upload%2cuser-read-recently-played%2cuser-top-read%2cuser-read-playback-position%2cuser-read-playback-state%2cuser-modify-playback-state%2cuser-read-currently-playing%2capp-remote-control%2cstreaming%2cplaylist-modify-public%2cplaylist-modify-private%2cplaylist-read-private%2cplaylist-read-collaborative%2cuser-follow-modify%2cuser-follow-read%2cuser-library-modify%2cuser-library-read%2c";
 // var refresh = "AQAzBYsvuKvMUj9bwTlghZal_d07EO9HHW4rblI-_aypVs31vJ89qdcHwwTmi0jfVJhQop9frRtilFFrFGaEU8-zdf9blr71qP8-BIWOzvgLxGY6pZi1ZGZWOSDqG7GrDmo";
 var datatopsongs = '';
-var user_token = "BQCxVcKns5xuEA6yhKjVIPWWkBLN3BTgJpmtru413cOur6x0At4ldtpMAQejbuKUSDtdFIIj1eqvbQNg7RlsuISzaYIaqC2zIJlPrhn9n1kGWzUyfgTC_9KbGoE7gzRlpNzRQKteVdbo67fz7mRNZKwGKQYuKgX7Bqvm6KaOy30tLA2Y9cJdYerAYdZ2c_hIMJf2SGIVs7SpnkaP9sLly62qrjlaVMLv0h_aFgMmU9MMsyD3_xZWk2WLi_54RzBxtlFyg5MM7sVypEwI9YyZxGrvz00";
+var user_token = "";
 var user_id = "";
 // function setup(){
 //
@@ -59,7 +59,7 @@ function printtop(top) {
 }
 
 function playlistMaker(trackuri){
- var url = 'https://api.spotify.com/v1/users/' + "aksatl" + '/playlists';
+ var url = 'https://api.spotify.com/v1/users/' + user_id + '/playlists';
  fetch(url, {
     method: 'POST',
      headers: {
@@ -241,7 +241,7 @@ const app = new Vue({
             redirect_uri: 'https://alexanderswann.github.io/DSA/',
             me: null,
             top: null,
-            my_token: "BQCxVcKns5xuEA6yhKjVIPWWkBLN3BTgJpmtru413cOur6x0At4ldtpMAQejbuKUSDtdFIIj1eqvbQNg7RlsuISzaYIaqC2zIJlPrhn9n1kGWzUyfgTC_9KbGoE7gzRlpNzRQKteVdbo67fz7mRNZKwGKQYuKgX7Bqvm6KaOy30tLA2Y9cJdYerAYdZ2c_hIMJf2SGIVs7SpnkaP9sLly62qrjlaVMLv0h_aFgMmU9MMsyD3_xZWk2WLi_54RzBxtlFyg5MM7sVypEwI9YyZxGrvz00"
+            my_token: ""
         }
     },
     methods: {
