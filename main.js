@@ -63,8 +63,8 @@ function playlistMaker(trackuri){
  fetch(url, {
      headers: {
          'Authorization': 'Bearer ' + user_token,
-         "Accept: application/json",
-         "Content-Type: application/json"
+         "Accept": "application/json",
+         "Content-Type": "application/json"
      },
      body: JSON.stringify("{\"name\":\"Poopy Doopy\",\"description\":\"New playlist description\",\"public\":false}")
  }).then(response => {
@@ -75,7 +75,7 @@ function playlistMaker(trackuri){
 
 }
 
-// curl -X "POST" 
+// curl -X "POST"
 // "https://api.spotify.com/v1/users/aksatl/playlists"
 //  --data "{\"name\":\"New Playlist\",\"description\":\"New playlist description\",\"public\":false}"
 //  -H "Accept: application/json"
