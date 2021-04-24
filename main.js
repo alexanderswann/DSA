@@ -94,6 +94,21 @@ function addSongs(data, trackuri){
    }).then(data => {
        console.log(data);
    })
+   getRecs(id);
+
+}
+
+function getRecs(playlist_id){
+  var url = 'https://dsa-app.herokuapp.com/v1/rec?id=' + playlist_id + '&auth=' + user_token;
+  fetch(url, {
+     method: 'GET',
+
+
+  }).then(response => {
+      return response.json()
+  }).then(data => {
+      console.log(data);
+  })
 
 }
 
