@@ -59,19 +59,33 @@ function printtop(top) {
 }
 
 function playlistMaker(trackuri){
- var url = 'https://api.spotify.com/v1/users/' + user_id + '/playlists';
+ var url = 'https://api.spotify.com/v1/users/' + "aksatl" + '/playlists';
  fetch(url, {
      headers: {
-         'Authorization': `Bearer ${payload}`
-     }
+         'Authorization': 'Bearer ' + user_token,
+         "Accept: application/json",
+         "Content-Type: application/json"
+     },
+     body: JSON.stringify("{\"name\":\"Poopy Doopy\",\"description\":\"New playlist description\",\"public\":false}")
  }).then(response => {
      return response.json()
  }).then(data => {
-     this.me = data
-     userid(data)
+     console.log(data)
  })
 
 }
+
+// curl -X "POST" 
+// "https://api.spotify.com/v1/users/aksatl/playlists"
+//  --data "{\"name\":\"New Playlist\",\"description\":\"New playlist description\",\"public\":false}"
+//  -H "Accept: application/json"
+//
+//   -H "Content-Type: application/json"
+//    -H "Authorization: Bearer BQAOQlVHOfo1NlAKiulwnB3_7PbX-0jP3_aC6L8yWT3pEUDsoIfWNSpSrlmXQmOKUHyjPnKJTRA230C3pZjQvYmJLs4sHfCl9_8tnxt20IkBKZ8Gz46LYyIzwOC2bfRwloT0jy2VW2wzhZ8zYLgNHmaZ97SdEvFFBFEE_Qt1cMCNrzD3HLT3JFbJSFZq-uUrRrceQi4_C2ozyHqtFCyvSBzBxgS9-chIKrJSAkA8nfyB8f2nIx803Gmu1o-wc-kuwyvTRqvkrCAqpauM7q8"
+//
+//
+
+
 
 
 function token (token){
