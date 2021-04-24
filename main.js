@@ -6,7 +6,7 @@
 // var scopes = "%2cugc-image-upload%2cuser-read-recently-played%2cuser-top-read%2cuser-read-playback-position%2cuser-read-playback-state%2cuser-modify-playback-state%2cuser-read-currently-playing%2capp-remote-control%2cstreaming%2cplaylist-modify-public%2cplaylist-modify-private%2cplaylist-read-private%2cplaylist-read-collaborative%2cuser-follow-modify%2cuser-follow-read%2cuser-library-modify%2cuser-library-read%2c";
 // var refresh = "AQAzBYsvuKvMUj9bwTlghZal_d07EO9HHW4rblI-_aypVs31vJ89qdcHwwTmi0jfVJhQop9frRtilFFrFGaEU8-zdf9blr71qP8-BIWOzvgLxGY6pZi1ZGZWOSDqG7GrDmo";
 var datatopsongs = '';
-var user_token = "BQCOjmJGs-J3OodQZ9wtWU7Iwz9sfiGiyqeBGeA1-P5JeZ5JeNYZiWGMrkog8WryQn63oGv9LCBQZQYFUIHPR_SQX2LWTI4qapQMhhRZ0b4HwhCWOJDwE6qs6v6BLHQenbScT2yDf_oGDd9lgrqTeCaPsFWpdzWvm04psRcyfdh6jjcr_f9ToejJz2BfDGE5eiQlGZnPyWRqOIQa6wZm6uXg5r4WZHg7RP_xKD8eKEjaUfymzmTyaqnqawhwmwxkt9-t-dsRHSh1JXo-09AzGGLEEZg";
+var user_token = "BQCxVcKns5xuEA6yhKjVIPWWkBLN3BTgJpmtru413cOur6x0At4ldtpMAQejbuKUSDtdFIIj1eqvbQNg7RlsuISzaYIaqC2zIJlPrhn9n1kGWzUyfgTC_9KbGoE7gzRlpNzRQKteVdbo67fz7mRNZKwGKQYuKgX7Bqvm6KaOy30tLA2Y9cJdYerAYdZ2c_hIMJf2SGIVs7SpnkaP9sLly62qrjlaVMLv0h_aFgMmU9MMsyD3_xZWk2WLi_54RzBxtlFyg5MM7sVypEwI9YyZxGrvz00";
 var user_id = "";
 // function setup(){
 //
@@ -99,24 +99,29 @@ function addSongs(data, trackuri){
 }
 
 function getRecs(playlist_id){
-  var url = 'https://dsa-app.herokuapp.com/v1/rec?id=' + playlist_id + '&auth=' + user_token;
-  // fetch(url, {
-  //    method: 'GET',
-  //
-  // }).then(response => {
-  //     return response
-  // }).then(data => {
-  //     console.log(data);
-  // })
+  var url = 'https://cors-anywhere.herokuapp.com/https://dsa-app.herokuapp.com/v1/rec?id=' + "playlist_id" + '&auth=' + "user_token";
+  fetch(url, {
+     method: 'GET',
+     headers: {
 
-  const Http = new XMLHttpRequest();
+         "Accept": "*/*",
+         "Access-Control-Request-Method": "GET",
 
-Http.open("GET", url);
-Http.send();
+         "Access-Control-Allow-Origin": "*",
+         "Accept": "application/json",
+         "Content-Type": "application/json",
+         "X-Requested-With" :"application/json",
+     },
 
-Http.onreadystatechange = (e) => {
-  console.log(Http.responseText)
-}
+
+
+
+
+  }).then(response => {
+return response.json()
+  }).then(data => {
+      console.log(data);
+  })
 
 }
 
@@ -236,7 +241,7 @@ const app = new Vue({
             redirect_uri: 'https://alexanderswann.github.io/DSA/',
             me: null,
             top: null,
-            my_token: "BQCOjmJGs-J3OodQZ9wtWU7Iwz9sfiGiyqeBGeA1-P5JeZ5JeNYZiWGMrkog8WryQn63oGv9LCBQZQYFUIHPR_SQX2LWTI4qapQMhhRZ0b4HwhCWOJDwE6qs6v6BLHQenbScT2yDf_oGDd9lgrqTeCaPsFWpdzWvm04psRcyfdh6jjcr_f9ToejJz2BfDGE5eiQlGZnPyWRqOIQa6wZm6uXg5r4WZHg7RP_xKD8eKEjaUfymzmTyaqnqawhwmwxkt9-t-dsRHSh1JXo-09AzGGLEEZg"
+            my_token: "BQCxVcKns5xuEA6yhKjVIPWWkBLN3BTgJpmtru413cOur6x0At4ldtpMAQejbuKUSDtdFIIj1eqvbQNg7RlsuISzaYIaqC2zIJlPrhn9n1kGWzUyfgTC_9KbGoE7gzRlpNzRQKteVdbo67fz7mRNZKwGKQYuKgX7Bqvm6KaOy30tLA2Y9cJdYerAYdZ2c_hIMJf2SGIVs7SpnkaP9sLly62qrjlaVMLv0h_aFgMmU9MMsyD3_xZWk2WLi_54RzBxtlFyg5MM7sVypEwI9YyZxGrvz00"
         }
     },
     methods: {
