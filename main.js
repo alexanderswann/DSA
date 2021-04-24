@@ -117,7 +117,7 @@ function token (token){
 
 function userid(ide){
   user_id = ide.id;
-  console.log(id);
+  console.log(ide);
 }
 
 function songprinter(title, img, artists, i) {
