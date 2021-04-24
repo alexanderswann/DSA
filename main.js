@@ -7,6 +7,7 @@
 // var refresh = "AQAzBYsvuKvMUj9bwTlghZal_d07EO9HHW4rblI-_aypVs31vJ89qdcHwwTmi0jfVJhQop9frRtilFFrFGaEU8-zdf9blr71qP8-BIWOzvgLxGY6pZi1ZGZWOSDqG7GrDmo";
 var datatopsongs = '';
 var user_token = "";
+var user_id = "";
 // function setup(){
 //
 //     var button = select('#topsongs');
@@ -58,8 +59,20 @@ function printtop(top) {
 }
 
 function playlistMaker(trackuri){
+ var url = 'https://api.spotify.com/v1/users/' + user_id + '/playlists';
+ fetch(url, {
+     headers: {
+         'Authorization': `Bearer ${payload}`
+     }
+ }).then(response => {
+     return response.json()
+ }).then(data => {
+     this.me = data
+     userid(data)
+ })
 
 }
+
 
 function token (token){
   user_token = token;
@@ -67,7 +80,7 @@ function token (token){
 }
 
 function userid(id){
-  console.log(idea);
+  console.log(id);
 }
 
 function songprinter(title, img, artists, i) {
@@ -184,11 +197,10 @@ const app = new Vue({
                 }).then(response => {
                     return response.json()
                 }).then(data => {
-                    this.me = data
                     userid(data)
                 })
             }
-            alert(this.me)
+
         },
 
         topsongs() {
