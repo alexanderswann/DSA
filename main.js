@@ -71,8 +71,29 @@ function playlistMaker(trackuri){
  }).then(response => {
      return response.json()
  }).then(data => {
-     console.log(data)
+     addSongs(data, trackuri);
  })
+
+}
+
+function addSongs(data, trackuri){
+  id = data.id;
+  console.log(trackuri.toString());
+
+   var url = 'https://api.spotify.com/v1/playlists/' + id + '/tracks?uris=' + trackuri.toString();
+   fetch(url, {
+      method: 'POST',
+       headers: {
+           'Authorization': 'Bearer ' + user_token,
+           "Accept": "application/json",
+           "Content-Type": "application/json"
+       },
+
+   }).then(response => {
+       return response.json()
+   }).then(data => {
+       console.log(data);
+   })
 
 }
 
@@ -207,7 +228,7 @@ const app = new Vue({
 
                 fetch('https://api.spotify.com/v1/me', {
                     headers: {
-                        'Authorization': `Bearer ${payload}`
+                        'Authorization': `Bearer ${this.my_token}`
                     }
                 }).then(response => {
                     return response.json()
