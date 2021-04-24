@@ -96,6 +96,21 @@ public class SpotifyMain {
                 System.out.println(output3);
             }
 
+            URL uq = new URL("https://dsa-app.herokuapp.com/v1/rec?id=4sydngGHk4bcNePUKfRgbH&auth=BQCqLD9goem2aEtktlZKuBJRE3EYQ2KVyapYp-zAO7neQuqwTfHSfswRZJBJm0e9_HcuFHb6vzJk3-9GIhIM14dcrV3el7BMnn_Pu5xJzH_HMFh2CojSsCYBmov4HF705lVkKjVnf0SmnnKnjNbPDE91YvEN5INNVEaVkEKYv0_DbLeCe7WGqWjWNwOLRcXj-qI6HEk9CDAb8ppJX6yqXRZEXHWxa8IWyCbvSHuaS1u_Z49dZZAUQ_ai4pCtIzI4WCC4iE9e3EDuANBzIl0qpWTJ8sk");//top/tracks?time_range=short_term&limit=5");
+            HttpURLConnection conn45 = (HttpURLConnection) uq.openConnection();
+            conn45.setDoOutput(true);
+            conn45.setRequestMethod("GET");
+
+
+            BufferedReader br25 = new BufferedReader(new InputStreamReader((conn45.getInputStream())));
+
+            String output35;
+            System.out.println(u);
+            System.out.println("Output from Server .... \n");
+            while ((output35 = br25.readLine()) != null) {
+                System.out.println(output35);
+            }
+
             //conn.disconnect();
         } catch (MalformedURLException e) {
             e.printStackTrace();
