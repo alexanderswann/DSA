@@ -237,6 +237,7 @@ const app = new Vue({
                     userid(data)
                 })
             }
+            this.me = "true";
 
         },
 
