@@ -6,7 +6,7 @@
 // var scopes = "%2cugc-image-upload%2cuser-read-recently-played%2cuser-top-read%2cuser-read-playback-position%2cuser-read-playback-state%2cuser-modify-playback-state%2cuser-read-currently-playing%2capp-remote-control%2cstreaming%2cplaylist-modify-public%2cplaylist-modify-private%2cplaylist-read-private%2cplaylist-read-collaborative%2cuser-follow-modify%2cuser-follow-read%2cuser-library-modify%2cuser-library-read%2c";
 // var refresh = "AQAzBYsvuKvMUj9bwTlghZal_d07EO9HHW4rblI-_aypVs31vJ89qdcHwwTmi0jfVJhQop9frRtilFFrFGaEU8-zdf9blr71qP8-BIWOzvgLxGY6pZi1ZGZWOSDqG7GrDmo";
 var datatopsongs = '';
-var user_token = "BQCuLZlbDsstf5kxIL6VTlSvYtXU5DWUdW3tWkBy_YYsCPt0LVusBX_GgJi1kn5L1ZWos3LvulWl9vYXwPKajF4qFdw7z1DTRQSnHodiAH40A686j3nUMOw5nreSBoegjuHNgXknQ-esY5TzDbm1wleOEmbXpjh9M7CCmIjW8JVVkINWcobp1U9NxOYKBI2Z8GyyQ8SM58kvILGjNhZ5R5BjzUpz1ukJOgKn7RnNSJg97GXcuClTVM4lwNXSAyY1Uwdpl_1KtOijKZOGdiGOS1WfmpU";
+var user_token = "";
 var user_id = "";
 // function setup(){
 //
@@ -115,7 +115,8 @@ function token (token){
   console.log(user_token);
 }
 
-function userid(id){
+function userid(ide){
+  user_id = ide.id;
   console.log(id);
 }
 
