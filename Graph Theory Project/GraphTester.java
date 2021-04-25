@@ -36,7 +36,7 @@ public class GraphTester{
 			Path newPath2 = new Path(m);
 
 
-
+			//newPath.addVertex(m);
 			newPath.addVertex(n);
 			newPath.addVertex(vertexes.get(1));
 			newPath.addVertex(vertexes.get(3));
