@@ -102,7 +102,7 @@ function addSongs(data, trackuri,name ){
 }
 //https://cors-anywhere.herokuapp.com/
 function getRecs(playlist_id){
-  var url = 'https://dsa-app.herokuapp.com/v1/rec?id=' + playlist_id + '&auth=' + user_token + "&uid" + user_id;
+  var url = 'https://dsa-app.herokuapp.com/v1/rec?id=' + playlist_id + '&auth=' + user_token + "&uid=" + user_id;
   fetch(url, {
      method: 'GET',
      headers: {
