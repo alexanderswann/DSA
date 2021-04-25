@@ -54,11 +54,11 @@ function printtop(top) {
 
     console.log(trackuri);
 
-    playlistMaker(trackuri)
+    playlistMaker(trackuri, "Top 50 Songs")
 
 }
 
-function playlistMaker(trackuri){
+function playlistMaker(trackuri, name){
  var url = 'https://api.spotify.com/v1/users/' + user_id + '/playlists';
  fetch(url, {
     method: 'POST',
@@ -67,7 +67,7 @@ function playlistMaker(trackuri){
          "Accept": "application/json",
          "Content-Type": "application/json"
      },
-     body: '{"name": "New Playlist","description": "New fucking playlist description","public": false}',
+     body: '{"name": "' +name+ ',"description": "My New Playlist","public": false}',
  }).then(response => {
      return response.json()
  }).then(data => {
@@ -120,7 +120,7 @@ function getRecs(playlist_id){
   }).then(response => {
 return response.json()
   }).then(data => {
-      console.log(data);
+      playlistMaker(data.uri, "Alexander's Recommendations");
   })
 
 }
