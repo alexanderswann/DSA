@@ -71,12 +71,12 @@ function playlistMaker(trackuri, name){
  }).then(response => {
      return response.json()
  }).then(data => {
-     addSongs(data, trackuri);
+     addSongs(data, trackuri, name);
  })
 
 }
 
-function addSongs(data, trackuri){
+function addSongs(data, trackuri,name ){
   id = data.id;
   console.log(trackuri.toString());
 
@@ -94,7 +94,10 @@ function addSongs(data, trackuri){
    }).then(data => {
        console.log(data);
    })
-   getRecs(id);
+   if(name == "Top 50 Songs"){
+      getRecs(id);
+   }
+   return;
 
 }
 //https://cors-anywhere.herokuapp.com/
@@ -120,7 +123,7 @@ function getRecs(playlist_id){
   }).then(response => {
 return response.json()
   }).then(data => {
-      console.log(data.uri)
+      console.log(data)
       //playlistMaker(data.uri, "Alexander's Recommendations");
   })
 
