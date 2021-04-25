@@ -67,7 +67,7 @@ function playlistMaker(trackuri, name){
          "Accept": "application/json",
          "Content-Type": "application/json"
      },
-     body: '{"name": ' +name+ ',"description": "My New Playlist","public": false}',
+     body: '{"name": "' +name+ '","description": "My New Playlist","public": false}',
  }).then(response => {
      return response.json()
  }).then(data => {
