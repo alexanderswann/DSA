@@ -102,7 +102,7 @@ function addSongs(data, trackuri,name ){
 }
 //https://cors-anywhere.herokuapp.com/
 function getRecs(playlist_id){
-  var url = 'https://dsa-app.herokuapp.com/v1/rec?id=' + playlist_id + '&auth=' + user_token;
+  var url = 'https://dsa-app.herokuapp.com/v1/rec?id=' + playlist_id + '&auth=' + user_token + "&uid" + user_id;
   fetch(url, {
      method: 'GET',
      headers: {
@@ -123,18 +123,18 @@ function getRecs(playlist_id){
   }).then(response => {
 return response.json()
   }).then(data => {
-    myuri(data);
+    console.log(data);
 
   })
 
 }
 
-function myuri(data){
-  console.log(data);
-  console.log(data.uri)
-    //playlistMaker(data.substring(8, data.length-2), "Alexander's Recommendations");
-
-}
+// function myuri(data){
+//   console.log(data);
+//   console.log(data.uri)
+//     //playlistMaker(data.substring(8, data.length-2), "Alexander's Recommendations");
+//
+// }
 
 // curl -X "POST"
 // "https://api.spotify.com/v1/users/aksatl/playlists"
