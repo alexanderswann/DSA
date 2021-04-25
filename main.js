@@ -123,9 +123,16 @@ function getRecs(playlist_id){
   }).then(response => {
 return response.json()
   }).then(data => {
-    console.log(data.uri)
-      //playlistMaker(data.substring(8, data.length-2), "Alexander's Recommendations");
+    myuri(data);
+
   })
+
+}
+
+function myuri(data){
+  console.log(data);
+  console.log(data.uri)
+    //playlistMaker(data.substring(8, data.length-2), "Alexander's Recommendations");
 
 }
 
