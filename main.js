@@ -97,7 +97,7 @@ function addSongs(data, trackuri,name ){
    if(name == "Top 50 Songs"){
       getRecs(id);
    }
-   return;
+   
 
 }
 //https://cors-anywhere.herokuapp.com/
