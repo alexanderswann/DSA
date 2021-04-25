@@ -120,7 +120,8 @@ function getRecs(playlist_id){
   }).then(response => {
 return response.json()
   }).then(data => {
-      playlistMaker(data.uri, "Alexander's Recommendations");
+      console.log(data.uri)
+      //playlistMaker(data.uri, "Alexander's Recommendations");
   })
 
 }
