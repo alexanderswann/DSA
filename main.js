@@ -121,11 +121,11 @@ function getRecs(playlist_id){
 
 
   }).then(response => {
-      playlistMaker(response.substring(8, response.length-2), "Alexander's Recommendations");
-  })//.then(data => {
-  //
-  //     playlistMaker(data.substring(8, data.length-2), "Alexander's Recommendations");
-  // })
+return response.json()
+  }).then(data => {
+    console.log(data)
+      //playlistMaker(data.substring(8, data.length-2), "Alexander's Recommendations");
+  })
 
 }
 
