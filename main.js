@@ -282,6 +282,7 @@ const app = new Vue({
 
         topsongs() {
             //alert(this.my_token)
+            this.top = " "
             token(this.my_token)
             fetch('https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=50', {
                 headers: {
