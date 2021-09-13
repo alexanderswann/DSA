@@ -5,7 +5,7 @@ public class RBTreeTester {
         System.out.println("\n\n\n");
 
         int[] toAdd = {9,34,65,1,5,65,32,22, 54,23,87,66,43,67,54,12,74,45,98,12,14,23,34,45,74,93,17,19,43,06,54,8,4,6,73,92,67,34,59,30,33,22,99,32,13,9,87,86,85,84,83,82,45,43,23,34,35,36,37,38,39,65,43,43,42,41,40,80,70,60,34,42,54,43,12,32,77,90,84,93,35,75,82,82,82,82,82,38,1,54,43, 34, 33, 32, 99,65,22,23, 9 ,5, 77, 66, 87};
-        int[] toRemove = {1,54,43, 34, 33, 32, 99,65,22,23, 9 ,5, 77, 66, 87,34,33,32,22,99,9,87,86,85,84,83,82,45,43,23,34,35,36,37,38,39,65,43,43,42,41,40,80,70,74,30, 60, 59, 19, 14, 13, 4, 17, 75};
+        int[] toRemove = {1,54,43, 34, 33, 32, 99,65,22,23, 9 ,5, 77, 66, 87,34,33,32,22,99,9,87,86,85,84,83,82,45,43,23,34,35,36, 17,37,38,39,65,43,43,42,41,40,80,70,74,30, 60, 90, 59, 19, 14, 13, 4, 17, 75};
         // int[] toAdd = {10,1,15,5,20,3};
 
         for (int i = 0; i < toAdd.length; i++ ) {
@@ -20,22 +20,22 @@ public class RBTreeTester {
           tree.remove(toRemove[i]);
         }
 
-      tree.add(66);
-      tree.remove(7);
-       tree.remove(99);
-      tree.remove(87);
-       tree.remove(86);
-       tree.remove(85);
-      tree.add(22);
-      tree.add(23);
-      tree.add(82);
-      tree.add(2);
-      tree.remove(2);
-      tree.remove(23);
+      // tree.add(66);
+      // tree.remove(7);
+      //  tree.remove(99);
+      // tree.remove(87);
+      //  tree.remove(86);
+      //  tree.remove(85);
+      // tree.add(22);
+      // tree.add(23);
+      // tree.add(82);
+      // tree.add(2);
+      // tree.remove(2);
+      // tree.remove(23);
         System.out.println(tree.contains(90));
 
         System.out.println("\n\n\n\n"+tree.levelOrder());
-        System.out.print(tree.preOrder());
+        System.out.println(tree.preOrder());
 
 
         //
@@ -93,8 +93,10 @@ public class RBTreeTester {
         // System.out.println(tree.levelOrder());
         // tree.add(28);
         //
-        // tree.add(13);
-        // System.out.println(tree.levelOrder());
+        //tree.remove(73);
+        System.out.println(tree.levelOrder());
+
+
 
     }
 
