@@ -15,7 +15,10 @@ var user_id = "";
 //
 // }
 function printtop(top) {
-    console.log(top);
+    //console.log(top);
+    var xsongs = document.getElementById("extra-songs").checked;
+
+    console.log(xsongs);
     // alert("hello")
 
     var title = "";
@@ -46,13 +49,13 @@ function printtop(top) {
 
 
         songprinter(title, img, artists, i);
-        console.log(title);
-        console.log(img);
-        console.log(artists);
+        //console.log(title);
+        //console.log(img);
+        //console.log(artists);
 
     }
 
-    console.log(trackuri);
+    //console.log(trackuri);
 
     playlistMaker(trackuri, "Top 50 Songs")
 
@@ -78,7 +81,7 @@ function playlistMaker(trackuri, name){
 
 function addSongs(data, trackuri,name ){
   id = data.id;
-  console.log(trackuri.toString());
+  //console.log(trackuri.toString());
 
    var url = 'https://api.spotify.com/v1/playlists/' + id + '/tracks?uris=' + trackuri.toString();
    fetch(url, {
@@ -92,7 +95,7 @@ function addSongs(data, trackuri,name ){
    }).then(response => {
        return response.json()
    }).then(data => {
-       console.log(data);
+       //console.log(data);
    })
    if(name == "Top 50 Songs"){
       getRecs(id);
@@ -123,7 +126,7 @@ function getRecs(playlist_id){
   }).then(response => {
 return response.json()
   }).then(data => {
-    console.log(data);
+    //console.log(data);
 
   })
 
@@ -151,12 +154,12 @@ return response.json()
 
 function token (token){
   user_token = token;
-  console.log(user_token);
+  //console.log(user_token);
 }
 
 function userid(ide){
   user_id = ide.id;
-  console.log(ide);
+  //console.log(ide);
 }
 
 function songprinter(title, img, artists, i) {
