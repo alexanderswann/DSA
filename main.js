@@ -18,7 +18,7 @@ var moresongs = "";
 function printtop(top) {
     //console.log(top);
 
-    console.log(xsongs);
+
     // alert("hello")
 
     var title = "";
