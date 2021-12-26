@@ -8,6 +8,7 @@
 var datatopsongs = '';
 var user_token = "";
 var user_id = "";
+var moresongs = "";
 // function setup(){
 //
 //     var button = select('#topsongs');
@@ -16,7 +17,6 @@ var user_id = "";
 // }
 function printtop(top) {
     //console.log(top);
-    var xsongs = document.getElementById("extra-songs").checked;
 
     console.log(xsongs);
     // alert("hello")
@@ -105,7 +105,7 @@ function addSongs(data, trackuri,name ){
 }
 //https://cors-anywhere.herokuapp.com/
 function getRecs(playlist_id){
-  var url = 'https://dsa-app.herokuapp.com/v1/rec?id=' + playlist_id + '&auth=' + user_token + "&uid=" + user_id;
+  var url = 'https://dsa-app.herokuapp.com/v1/rec?id=' + playlist_id + '&auth=' + user_token + "&uid=" + user_id + "&ex=" +moresongs;
   fetch(url, {
      method: 'GET',
      headers: {
@@ -255,7 +255,8 @@ const app = new Vue({
             redirect_uri: 'https://alexanderswann.github.io/DSA/',
             me: null,
             top: null,
-            my_token: ""
+            my_token: "",
+            chosen: false
         }
     },
     methods: {
@@ -285,6 +286,7 @@ const app = new Vue({
 
         topsongs() {
             //alert(this.my_token)
+            moresongs = this.chosen
             this.top = "Please wait while your top songs and your new playlist are being generated. Check your spotify account in about 30 seconds."
             token(this.my_token)
             fetch('https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=50', {

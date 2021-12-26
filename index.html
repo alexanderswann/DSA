@@ -56,7 +56,9 @@
             <button id="this-top" @click="topsongs">Get Top Songs?</button>:
             <br>
             <br>
-            <input type="checkbox" id="extra-songs" >Check to search more songs(will take more time)</input>
+            <input type="checkbox" id="single" v-model="chosen">
+            <label for="single">Check to search more songs(will take more time)</input>
+            <!-- <input type="checkbox" @click="moresongs" id="extra-songs" >Check to search more songs(will take more time)</input> -->
 
         </template>
   </template>
